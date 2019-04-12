@@ -1,0 +1,45 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}
+   Student System
+{% endblock %}
+{% block head %}
+  {{ super() }}
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
+
+{% block styles  %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/cover.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+          <div class="inner cover">
+            <a href="{{ url_for('auth.login') }}" style="text-decoration:none"><h1 class="cover-heading">欢迎来到学生信息管理系统.</h1></a>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+{% endblock %}
+
+

@@ -1,0 +1,9 @@
+{{ user.username }} 您好同学,
+
+欢迎来到学生信息管理系统!
+
+请点击下面链接确定你的账户:
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+注意：不要回复此电子邮件。
