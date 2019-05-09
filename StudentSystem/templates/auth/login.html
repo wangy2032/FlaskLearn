@@ -3,9 +3,6 @@
 {% block nav %}{% endblock %}
 
 {% block page_content %}
-    <a href="{{ url_for('auth.register') }}">
-        <div class="ui primary button signup-btn">Sign up</div>
-    </a>
     <div class="ui middle aligned center aligned grid">
         <div class="column">
             <h2 class="ui orange image header">
@@ -28,9 +25,14 @@
                         </div>
                     </div>
                     <div class="inline field pull-left">
-                           {{ form.remember }} {{ form.remember.label }}
+                       {{ form.remember }} {{ form.remember.label }}
                     </div>
-                    <div>{{ form.submit(class='ui fluid large orange submit button') }}</div>
+                    <div>
+                        {{ form.submit(class='ui fluid large orange submit button') }}
+                    </div>
+                     <div class="inline field pull-right">
+                        <a href="{{ url_for('main.base') }}">忘记密码？</a>
+                    </div>
                     <div>{{ mess }}</div>
                 </div>
             </form>

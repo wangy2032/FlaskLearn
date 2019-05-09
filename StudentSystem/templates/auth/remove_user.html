@@ -1,0 +1,25 @@
+{% extends "base1.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}System System - Change Password{% endblock %}
+
+{% block page_content %}
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading">用户列表：</div>
+        <table class="table">
+            <th>编号</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>邮箱</th>
+            {% for user in users %}
+                <tr><td>{{ user.id }}</td>
+                <td src="">{{ user.StudentId }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

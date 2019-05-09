@@ -52,9 +52,15 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
 #权限模型
 class Role(UserMixin,db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
     rolename = db.Column(db.String(64),unique=True)
     users = db.relationship('User', backref='role', lazy='dynamic')
+
+
+'''
+学生信息模型
+'''

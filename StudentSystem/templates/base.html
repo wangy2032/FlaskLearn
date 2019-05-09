@@ -24,12 +24,6 @@
             <a class="navbar-brand" href="{{ url_for('main.base') }}">主页</a>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="">Home</a></li>
-                {% if current_user.is_authenticated %}
-                <li><a href="">Profile</a></li>
-                {% endif %}
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li class="dropdown">

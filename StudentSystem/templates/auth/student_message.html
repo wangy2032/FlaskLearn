@@ -1,0 +1,63 @@
+{% extends "base1.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}System System - Change Password{% endblock %}
+
+
+{% block page_content %}
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">学生信息</div>
+  <div class="panel-body">
+      <form method="post">
+          {{ form.csrf_token }}
+        <div class="col-lg-12">
+        <div class="input-group">
+            {{ form.student_number(class="form-control", placeholder="学号") }}
+          <span class="input-group-btn">
+              {{ form.ti_jiao(class="btn btn-default") }}
+          </span>
+        </div>
+      </div>
+      </form>
+  </div>
+  <!-- Table -->
+  <table class="table">
+        <th>编号</th>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>电话</th>
+        <th>地址</th>
+      {% if json_data %}
+            <tr><td>{{ json_data['id'] }}</td>
+                    <td>{{ json_data['number'] }}</td>
+                    <td>{{ json_data['name'] }}</td>
+                    <td>{{ json_data['email'] }}</td>
+                        <td>{{ json_data['iphone'] }}</td>
+                        <td>{{ json_data['address'] }}</td>
+                    </tr>
+      {% else %}
+          {% for i in range(10) %}
+                    <tr><td>{{ i+1 }}</td>
+                    <td>15111202032</td>
+                    <td>WangYu</td>
+                    <td>884083081@qq.com</td>
+                        <td>15266489360</td>
+                        <td>山东省淄博市</td>
+                    </tr>
+          {% endfor %}
+      {% endif %}
+  </table>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

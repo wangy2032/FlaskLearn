@@ -21,20 +21,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url_for('main.base') }}">主页</a>
+            <a class="navbar-brand" href="{{ url_for('auth.shou_ye') }}">主页</a>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="">Home</a></li>
-                {% if current_user.is_authenticated %}
-                <li><a href="">Profile</a></li>
-                {% endif %}
-            </ul>
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="">Home</a></li>-->
+                <!--{% if current_user.is_authenticated %}-->
+                <!--<li><a href="">Profile</a></li>-->
+                <!--{% endif %}-->
+            <!--</ul>-->
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         {% if current_user.is_authenticated %}
                             {{ current_user.username }} <b class="caret"></b>
                         {% endif %}
@@ -42,7 +42,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('auth.change_password') }}">修改密码</a></li>
-                        <li><a href="">修改邮箱</a></li>
+                        <li><a href="{{ url_for('auth.change_email') }}">修改邮箱</a></li>
                         <li><a href="{{ url_for('auth.logout') }}">退出登陆</a></li>
                     </ul>
                 </li>
@@ -61,16 +61,23 @@
         <div class="col-md-2 col-md-push-1">.
             <div class="list-group">
               <a href="#" class="list-group-item active">
-                &nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp; 垂直导航
+                &nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true" disabled="False"></span>&nbsp; 垂直导航
               </a>
-              <a href="{{ url_for('main.base') }}" class="list-group-item">
-                &nbsp;<span class="glyphicon glyphicon-object-align-bottom" aria-hidden="true"></span>&nbsp; 系统首页
+              <a href="{{ url_for('auth.shou_ye') }}" class="list-group-item">
+                &nbsp;<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp; 系统首页
               </a>
-              <a href="{{ url_for('main.base') }}" class="list-group-item">
-                  &nbsp;<span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp; 学生成绩
+              <a href="{{ url_for('auth.student_message') }}" class="list-group-item">
+                  &nbsp;<span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp; 学生信息
               </a>
-              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item">Vestibulum at eros</a>
+              <a href="{{ url_for('auth.add_student') }}" class="list-group-item">
+                   &nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; 新增学生
+              </a>
+              <a href="{{ url_for('auth.add_user') }}" class="list-group-item">
+                    &nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span>&nbsp; 添加账户
+              </a>
+                <a href="{{ url_for('auth.remove_user') }}" class="list-group-item">
+                    &nbsp;<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp; 账户列表
+              </a>
             </div>
         </div>
     </div>
