@@ -1,0 +1,39 @@
+<html>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="refresh"content="2">
+<script src = "{{ url_for('static',filename = 'js/echarts.js') }}"></script>
+<script src = "{{ url_for('static',filename = 'js/infographic.js') }}"></script>
+</head><title></title>
+
+ <body>
+ <div id="business_load1" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+
+        var option = {
+            title:{
+                text:'内存折线图'
+            },
+            tooltip:{},
+            legend:{
+                data:['from beijng']
+            },
+            xAxis:{
+                data:["总内存","使用内存","空闲"]
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'total',
+                type:'line',
+                data:[{{info['mem_total']}},{{info['mem_used']}},{{info['mem_free']}}]
+            }]
+        };
+
+        var myChart = echarts.init(document.getElementById('business_load1'));
+        myChart.setOption(option);
+    </script>
+
+</body>
+</html>

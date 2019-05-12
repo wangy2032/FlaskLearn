@@ -8,8 +8,9 @@
 {% block page_content %}
 <div class="col-md-8 col-md-push-1">
     <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">老师账号</div>
+  <div class="panel-heading">
+
+  </div>
   <div class="panel-body">
       <form method="post">
           {{ form.csrf_token }}
@@ -22,6 +23,10 @@
             </div>
           </div>
       </form>
+      <button type="button" class="btn btn-primary btn-sm">
+                        <a style='text-decoration:none; color:#FFFFFF'
+                           href="{{ url_for('admin.teacher_add')}}">
+                            添加</a></button>
   </div>
   </div>
   <!-- Table -->
@@ -30,8 +35,8 @@
         <th>工号</th>
         <th>姓名</th>
         <th>邮箱</th>
-        <th>电话</th>
-        <th>地址</th>
+        <th>激活</th>
+        <th>身份</th>
         <th>操作</th>
         {% for teacher in teachers %}
             <tr>
@@ -40,14 +45,22 @@
                 <td>{{ teacher.username }}</td>
                 <td>{{ teacher.email }}</td>
                 <td>{{ teacher.confirmed }}</td>
-                <td>{{ teacher.role_id }}</td>
+                {% if teacher.role_id == 1 %}
+                    <td>管理员</td>
+                {% endif %}
+                {% if teacher.role_id == 2 %}
+                    <td>老师</td>
+                {% endif %}
+                {% if teacher.role_id == 3 %}
+                    <td>学生</td>
+                {% endif %}
                 <td>
                     <button onclick="return confirm('你确定')"
                             type="button" class="btn btn-danger btn-sm">
                         <a style='text-decoration:none; color:#FFFFFF'
                            href="{{ url_for('admin.teacher_delete', id=teacher.id) }}">
                             删除</a></button>
-                    <button type="button" class="btn btn-danger btn-sm">
+                    <button type="button" class="btn btn-primary btn-sm">
                         <a style='text-decoration:none; color:#FFFFFF'
                            href="{{ url_for('admin.teacher_modify', id=teacher.StudentId) }}">
                             修改</a></button>

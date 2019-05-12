@@ -61,4 +61,3 @@ class Role(UserMixin,db.Model):
     rolename = db.Column(db.String(64),unique=True)
     users = db.relationship('User', backref='role', lazy='dynamic')
 
-
