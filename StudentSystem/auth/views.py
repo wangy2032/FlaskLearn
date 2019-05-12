@@ -6,7 +6,8 @@ from sqlalchemy import or_
 from ..models import User
 from . import auth
 from StudentSystem import db
-from .forms import LoginForm, AddUserForm, ChangePasswordForm, ChangeEmailForm, AddStudentForm, SearchForm, RetrievePasswordForm
+from .forms import LoginForm, AddUserForm, ChangePasswordForm, \
+    ChangeEmailForm, AddStudentForm, SearchForm, RetrievePasswordForm
 from ..sendEmail import send_email
 
 '''
@@ -24,9 +25,8 @@ def login():
         }
         user = User.query.filter(*filters).first()
         if user is not None and user.verify_password(form.password.data):
-
             login_user(user,form.remember.data)
-            return redirect(url_for('main.base'))
+            return redirect(url_for('auth.shou_ye'))
         else:
             flash('你输入的学号或密码不正确')
     return render_template('auth/login.html', form=form)
@@ -44,6 +44,7 @@ def logout():
 添加账户
 '''
 @auth.route('/add_user', methods=['GET','POST'])
+@login_required
 def add_user():
     form = AddUserForm()
     if form.validate_on_submit():
@@ -100,6 +101,8 @@ def change_password():
 @login_required
 def change_email():
     email_form = ChangeEmailForm()
+    # user = User.query.filter_by(email=email_form.old_email.data).first()
+    # send_email(user.email, '修改邮箱验证码', 'auth/email/modify_email',)
     return render_template("auth/change_email.html", form=email_form)
 
 
@@ -155,9 +158,10 @@ def student_message():
 '''
 找回密码路由
 '''
-@auth.route('/Retrieve/Password')
+@auth.route('/retrieve_password')
 def retrieve_password():
     form = RetrievePasswordForm()
+    return render_template('auth/forget_password.html', form=form)
 
 
 

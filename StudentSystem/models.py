@@ -17,6 +17,7 @@ class User(UserMixin, db.Model):
     confirmed = db.Column(db.Boolean(),default=False)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
+
     @property
     def password(self):
         raise AttributeError('为了安全密码无法获得')
@@ -61,6 +62,3 @@ class Role(UserMixin,db.Model):
     users = db.relationship('User', backref='role', lazy='dynamic')
 
 
-'''
-学生信息模型
-'''

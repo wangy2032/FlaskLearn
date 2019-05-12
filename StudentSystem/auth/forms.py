@@ -65,10 +65,7 @@ class SearchForm(FlaskForm):
 '''
 找回密码表单
 '''
-class RetrievePasswordForm():
-    def exists_email(self, field):
-        if not User.query.filter_by(email = field.data).filst():
-            raise ValidationError('没有这个邮箱')
+class RetrievePasswordForm(FlaskForm):
 
     email = StringField("注册时邮箱", validators=[DataRequired(message='邮箱不能为空'),
                                              Email(message='邮箱格式不正确?')])
@@ -76,4 +73,4 @@ class RetrievePasswordForm():
                                                Length(6, message='密码长度不得小于6位数')])
     confirm = PasswordField("确认密码", validators=[DataRequired(message='密码不能为空'),
                                                 EqualTo('password', "两次密码不一致")])
-    getback = SubmitField("确认")
+    submit = SubmitField("确认")
