@@ -10,6 +10,14 @@ from .forms import LoginForm, AddUserForm, ChangePasswordForm, \
     ChangeEmailForm, AddStudentForm, SearchForm, RetrievePasswordForm
 from ..sendEmail import send_email
 
+
+'''
+主页路由
+'''
+@auth.route('/', methods=['POST', 'GET'])
+def index():
+    return render_template('index.html')
+
 '''
 登陆路由
 '''
@@ -19,16 +27,21 @@ def login():
     if form.validate_on_submit():
         filters = {
             or_(
-                User.StudentId == form.StudentId.data,
-                User.email == form.StudentId.data,
+                User.student_id == form.id.data
             )
         }
         user = User.query.filter(*filters).first()
-        if user is not None and user.verify_password(form.password.data):
-            login_user(user,form.remember.data)
-            return redirect(url_for('auth.shou_ye'))
-        else:
-            flash('你输入的学号或密码不正确')
+        if user is not None and user.verify_password(form.password.data.strip()):
+            print('a')
+            if user.role == '管理员':
+                login_user(user, form.remember.data)
+                return redirect(url_for('admin.index'))
+            elif user.role == '学生':
+                login_user(user, form.remember.data)
+                return redirect(url_for('student.index'))
+            elif user.role_id == 3:
+                return render_template('teacher/teacher_index.html')
+        flash('你输入的学号或密码不正确')
     return render_template('auth/login.html', form=form)
 
 '''
@@ -38,27 +51,8 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('auth.index'))
 
-'''
-添加账户
-'''
-@auth.route('/add_user', methods=['GET','POST'])
-@login_required
-def add_user():
-    form = AddUserForm()
-    if form.validate_on_submit():
-        user = User(StudentId=form.student_id.data,
-                    username=form.username.data,
-                    email=form.email.data,
-                    password=form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        token = user.getToken()
-        send_email(user.email, '确认你的账户', 'auth/email/confirm', user=user, token=token)
-        flash('注册成功,确认邮件已发送至你的邮箱')
-        # return redirect(url_for('.login'))
-    return render_template('auth/add_user.html', form=form)
 
 
 '''
@@ -105,55 +99,6 @@ def change_email():
     # send_email(user.email, '修改邮箱验证码', 'auth/email/modify_email',)
     return render_template("auth/change_email.html", form=email_form)
 
-
-'''
-账号显示
-'''
-@auth.route('/remove_user', methods=['GET', 'POST'])
-@login_required
-def remove_user():
-    users = User.query.all()
-    return render_template('auth/remove_user.html', users=users)
-
-
-'''
-新增学生
-'''
-@auth.route('/add_student', methods=['GET', 'POST'])
-@login_required
-def add_student():
-    form = AddStudentForm()
-    return render_template('auth/add_student.html', form=form)
-
-'''
-首页
-'''
-@auth.route('/shou_ye', methods=['GET', 'POST'])
-@login_required
-def shou_ye():
-    return render_template('auth/shou_ye.html')
-
-
-'''
-学生信息
-'''
-@auth.route('/student_message', methods=['GET', 'POST'])
-@login_required
-def student_message():
-    form = SearchForm()
-    if form.validate_on_submit():
-        if form.student_number.data:
-            json_data = {
-                'id': 1,
-                'number': 15111202032,
-                'name': '对话',
-                'email': '884083081@qq.com',
-                'iphone': 15266489360,
-                'address': '贵州省遵义市'
-            }
-            return render_template('auth/student_message.html', json_data=json_data, form=form)
-        return render_template('auth/student_message.html', form=form)
-    return render_template('auth/student_message.html', form=form)
 
 '''
 找回密码路由

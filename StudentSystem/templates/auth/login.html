@@ -7,7 +7,7 @@
         <div class="column">
             <h2 class="ui orange image header">
                 <img src="{{ url_for('static', filename='logo.png') }}" class="image">
-                <span class="content">Sign into StudentSystem</span>
+                <span class="content">学生信息管理登陆</span>
             </h2>
             <form class="login ui large form" method="post">
                 {{ form.csrf_token }}
@@ -15,7 +15,7 @@
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="user icon"></i>
-                            {{ form.StudentId(placeholder="ID or Email") }}
+                            {{ form.id(placeholder="ID") }}
                         </div>
                     </div>
                     <div class="field">

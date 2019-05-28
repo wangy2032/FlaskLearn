@@ -5,18 +5,18 @@ from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-
 #用户模型
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    StudentId = db.Column(db.String(64), unique=True, index=True)
+    student_id = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), index=True)
     email = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    confirmed = db.Column(db.Boolean(),default=False)
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-
+    # confirmed = db.Column(db.Boolean(),default=False)
+    confirmed = db.Column(db.String(64), default='否')
+    # role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    role = db.Column(db.String(128))
 
     @property
     def password(self):
@@ -47,17 +47,140 @@ class User(UserMixin, db.Model):
         db.session.add(self)
         return True
 
-# 用户加载函数
+# # 用户加载函数
 from . import login_manager
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-#权限模型
-class Role(UserMixin,db.Model):
-    __tablename__ = 'roles'
-    id = db.Column(db.Integer, primary_key=True)
-    rolename = db.Column(db.String(64),unique=True)
-    users = db.relationship('User', backref='role', lazy='dynamic')
+student_teacher_table = db.Table(
+    'student_teach',
+    db.Column('student_id', db.String(64), db.ForeignKey('students.student_id')),
+    db.Column('teacher_id', db.String(64), db.ForeignKey('teachers.teacher_id'))
+)
+'''
+课程
+'''
+class Course(db.Model):
+    __tablename__='courses'
+    #课程编号
+    course_id = db.Column(db.String(64), primary_key=True)
+    #课程名称
+    course_name = db.Column(db.String(64))
+    #课程学分
+    course_credit = db.Column(db.String(64))
+    #老师工号
+    teacher_id = db.Column(db.String(64),db.ForeignKey('teachers.teacher_id'))
+    #老师名字
+    teacher = db.Column(db.String(64))
+    #上课教室
+    class_room = db.Column(db.String(64))
+    #课时
+    course_time = db.Column(db.String(64))
+
+class Student(db.Model):
+    __tablename__='students'
+    student_id = db.Column(db.String(64),primary_key=True)
+    name = db.Column(db.String(64))
+    ji_ben_msg = db.relationship('Geren', uselist=False)
+    xue_ji_msg = db.relationship('Xueji', uselist=False)
+    teachers = db.relationship('Teacher',
+                               secondary=student_teacher_table,
+                               back_populates='students')
+
+class Teacher(db.Model):
+    __tablename__='teachers'
+    teacher_id = db.Column(db.String(64), primary_key=True)
+    name = db.Column(db.String(64))
+    course_msg = db.relationship('Course', uselist=False)
+    students = db.relationship('Student',
+                               secondary=student_teacher_table,
+                               back_populates='teachers')
+
+
+
+
+#个人信息
+class Geren(db.Model):
+    __tablename__ = 'gerens'
+    # id = db.Column(db.Integer, primary_key=True)
+    #学号
+    student_id = db.Column(db.String(64), db.ForeignKey('students.student_id'), primary_key=True)
+    #姓名
+    name = db.Column(db.String(64))
+    #名字拼音
+    name_ping_yin = db.Column(db.String(64))
+    #曾用名
+    user_name = db.Column(db.String(64))
+    #英文名字
+    english_name = db.Column(db.String(64))
+    #性别
+    sex = db.Column(db.String(64))
+    #证件类型
+    id_type = db.Column(db.String(64))
+    #证件号码
+    id_number = db.Column(db.String(64),unique=True)
+    #出生年月
+    date_of_birth = db.Column(db.String(64))
+    #民族
+    min_zu = db.Column(db.String(64))
+    #政治面貌
+    p_status= db.Column(db.String(64))
+    #入学时间
+    a_time = db.Column(db.String(64))
+    #籍贯
+    birthplace = db.Column(db.String(64))
+    #户口所在地
+    a_location = db.Column(db.String(64))
+    #生源地
+    s_source= db.Column(db.String(64))
+    #出生地
+    place_of_birth= db.Column(db.String(64))
+    #图片
+    user_image = db.Column(db.String(128))
+
+#学籍信息
+class Xueji(db.Model):
+    __tablename__ = 'xuejis'
+    # id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.String(64) ,db.ForeignKey('students.student_id'),primary_key=True)
+    #学年
+    school_year= db.Column(db.String(64))
+    #学期
+    semester = db.Column(db.String(64))
+    #年级
+    grade = db.Column(db.String(64))
+    #学院名称
+    college_name = db.Column(db.String(64))
+    #系名称
+    d_name = db.Column(db.String(64))
+    #专业名字
+    p_name = db.Column(db.String(64))
+    #专业方向
+    P_direction = db.Column(db.String(64))
+    #班级名字
+    class_name = db.Column(db.String(64))
+    #学制
+    school_system = db.Column(db.String(64))
+    #学籍状态
+    xue_ji_zt = db.Column(db.String(64))
+    #是否在校
+    zai_xiao= db.Column(db.String(64))
+    #报道状态
+    bao_dao_zt= db.Column(db.String(64))
+    #学历层次
+    e_level= db.Column(db.String(64))
+    #培养方式
+    t_method= db.Column(db.String(64))
+    #学生类型
+    student_type = db.Column(db.String(64))
+    #招生学院
+    a_college= db.Column(db.String(64))
+    #招生专业
+    a_profession= db.Column(db.String(64))
+
+
+
+
 

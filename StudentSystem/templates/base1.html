@@ -57,30 +57,30 @@
 
 {% block content %}
 <div class="row">
-    <div class="sidebar-nav">
-        <div class="col-md-2 col-md-push-1">.
-            <div class="list-group">
-              <a href="#" class="list-group-item active">
-                &nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true" disabled="False"></span>&nbsp; 垂直导航
-              </a>
-              <a href="{{ url_for('auth.shou_ye') }}" class="list-group-item">
-                &nbsp;<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp; 系统首页
-              </a>
-              <a href="{{ url_for('auth.student_message') }}" class="list-group-item">
-                  &nbsp;<span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp; 学生信息
-              </a>
-              <a href="{{ url_for('auth.add_student') }}" class="list-group-item">
-                   &nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; 新增学生
-              </a>
-              <a href="{{ url_for('auth.add_user') }}" class="list-group-item">
-                    &nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span>&nbsp; 添加账户
-              </a>
-                <a href="{{ url_for('auth.remove_user') }}" class="list-group-item">
-                    &nbsp;<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp; 账户列表
-              </a>
-            </div>
-        </div>
-    </div>
+    <!--<div class="sidebar-nav">-->
+        <!--<div class="col-md-2 col-md-push-1">.-->
+            <!--<div class="list-group">-->
+              <!--<a href="#" class="list-group-item active">-->
+                <!--&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true" disabled="False"></span>&nbsp; 垂直导航-->
+              <!--</a>-->
+              <!--<a href="{{ url_for('auth.shou_ye') }}" class="list-group-item">-->
+                <!--&nbsp;<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp; 系统首页-->
+              <!--</a>-->
+              <!--<a href="{{ url_for('auth.student_message') }}" class="list-group-item">-->
+                  <!--&nbsp;<span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp; 学生信息-->
+              <!--</a>-->
+              <!--<a href="{{ url_for('auth.add_student') }}" class="list-group-item">-->
+                   <!--&nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; 新增学生-->
+              <!--</a>-->
+              <!--<a href="{{ url_for('auth.add_user') }}" class="list-group-item">-->
+                    <!--&nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span>&nbsp; 添加账户-->
+              <!--</a>-->
+                <!--<a href="{{ url_for('auth.remove_user') }}" class="list-group-item">-->
+                    <!--&nbsp;<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>&nbsp; 账户表结构管理-->
+              <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
     <div class="col-md-6 col-md-push-2">
             {% for message in get_flashed_messages() %}
             <div class="alert alert-warning">

@@ -1,0 +1,138 @@
+{% extends "student/index.html" %}
+
+{% block title %}System System - Change Password{% endblock %}
+
+
+{% block page_content %}
+<div class="col-lg-6 col-lg-push-2">
+    <div class="panel-heading">
+      <h3>基本信息</h3>
+  </div>
+    <form class="form-inline">
+        <table class="table" style="border:0;">
+              <tbody>
+                    <tr>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputName1", style="display: block">学号：</label>
+                                <input type="text" class="form-control" id="exampleInputName1" placeholder=" ">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputName1" style="display: block">姓名：</label>
+                                <input type="text" class="form-control" id="exampleInputName2" placeholder=" ">
+                            </div>
+                        </td>
+
+                        <td rowspan="3", colspan="3" style="border: 0px">
+                            &nbsp;
+                            <img src="{{ url_for('static', filename='images/timg1.jpg') }}" height="150" width="139" alt="nihao" class="img-thumbnail">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">姓名拼音：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2" , style="display: block">性别：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                    </tr>
+                    <tr>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">曾用名：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">英文名字：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">证件类型：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">证件号码：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">出生年月：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">民族：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">政治面貌：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">入学时间：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">籍贯：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">户口所在地：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">生源地：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                        <td style="border: 0px">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2", style="display: block">出生地：</label>
+                                <input type="email" class="form-control" placeholder="">
+                            </div>
+                        </td>
+                    </tr>
+              </tbody>
+        </table>
+    </form>
+</div>
+{% endblock %}

@@ -9,7 +9,7 @@ from ..models import User
 登陆表单
 '''
 class LoginForm(FlaskForm):
-    StudentId = StringField('Username', validators=[DataRequired()])
+    id = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember me')
     submit = SubmitField('Login')

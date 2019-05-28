@@ -1,0 +1,80 @@
+{% extends "admin/index.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% from 'bootstrap/pagination.html' import render_pagination %}
+
+{% block title %}System System - Change Password{% endblock %}
+
+
+{% block page_content %}
+<div class="col-md-8 col-md-push-1">
+    <div class="panel panel-default">
+  <div class="panel-heading">
+      学籍管理
+  </div>
+  <div class="panel-body">
+      <form method="post">
+          {{ form.csrf_token }}
+          <div class="col-lg-10">
+            <div class="input-group">
+                {{ form.info_data( class="form-control") }}
+              <span class="input-group-btn">
+                 {{ form.search(class="btn btn-default") }}
+              </span>
+            </div>
+          </div>
+      </form>
+      <button type="button" class="btn btn-primary btn-sm">
+                        <a style='text-decoration:none; color:#FFFFFF'
+                           href="{{ url_for('admin.xue_ji_add')}}">
+                            添加</a></button>
+  </div>
+  </div>
+  <!-- Table -->
+  <table class="table">
+        <th>编号</th>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>学院</th>
+        <th>专业</th>
+        {% for teacher in teachers %}
+            <tr>
+                <td>{{ teacher.id }}</td>
+                <td>{{ teacher.student_id }}</td>
+                <td>{{ teacher.username }}</td>
+                <td>{{ teacher.email }}</td>
+                <td>{{ teacher.confirmed }}</td>
+                    <td>{{ teacher.role }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <a style='text-decoration:none; color:#FFFFFF'
+                           href="">
+                            查看</a></button>
+                    <button onclick="return confirm('你确定')"
+                            type="button" class="btn btn-danger btn-sm">
+                        <a style='text-decoration:none; color:#FFFFFF'
+                           href="">
+                            删除</a></button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <a style='text-decoration:none; color:#FFFFFF'
+                           href="">
+                            修改</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+  </table>
+    {% if pagination %}
+        <div style="float: right;margin-top: 20px"> {{ render_pagination(pagination) }}</div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
