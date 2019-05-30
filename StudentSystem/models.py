@@ -99,88 +99,51 @@ class Teacher(db.Model):
                                back_populates='teachers')
 
 
-
-
 #个人信息
 class Geren(db.Model):
     __tablename__ = 'gerens'
-    # id = db.Column(db.Integer, primary_key=True)
-    #学号
-    student_id = db.Column(db.String(64), db.ForeignKey('students.student_id'), primary_key=True)
-    #姓名
-    name = db.Column(db.String(64))
-    #名字拼音
-    name_ping_yin = db.Column(db.String(64))
-    #曾用名
-    user_name = db.Column(db.String(64))
-    #英文名字
-    english_name = db.Column(db.String(64))
-    #性别
-    sex = db.Column(db.String(64))
-    #证件类型
-    id_type = db.Column(db.String(64))
-    #证件号码
-    id_number = db.Column(db.String(64),unique=True)
-    #出生年月
-    date_of_birth = db.Column(db.String(64))
-    #民族
-    min_zu = db.Column(db.String(64))
-    #政治面貌
-    p_status= db.Column(db.String(64))
-    #入学时间
-    a_time = db.Column(db.String(64))
-    #籍贯
-    birthplace = db.Column(db.String(64))
-    #户口所在地
-    a_location = db.Column(db.String(64))
-    #生源地
-    s_source= db.Column(db.String(64))
-    #出生地
-    place_of_birth= db.Column(db.String(64))
-    #图片
-    user_image = db.Column(db.String(128))
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.String(64),  #学号
+                           db.ForeignKey('students.student_id'))
+    name = db.Column(db.String(64))#姓名
+    user_name = db.Column(db.String(64))#曾用名
+    sex = db.Column(db.String(64))    #性别
+    id_type = db.Column(db.String(64)) #证件类型
+    id_number = db.Column(db.String(64),unique=True)#证件号码
+    date_of_birth = db.Column(db.String(64))#出生年月
+    min_zu = db.Column(db.String(64))   #民族
+    p_status= db.Column(db.String(64))    #政治面貌
+    a_time = db.Column(db.String(64))    #入学时间
+    birthplace = db.Column(db.String(64))    #籍贯
+    a_location = db.Column(db.String(64))    #户口所在地
+    s_source= db.Column(db.String(64))    #生源地
+    place_of_birth= db.Column(db.String(64))    #出生地
+    user_image = db.Column(db.String(128))  #张片
 
 #学籍信息
 class Xueji(db.Model):
     __tablename__ = 'xuejis'
-    # id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.String(64) ,db.ForeignKey('students.student_id'),primary_key=True)
-    #学年
-    school_year= db.Column(db.String(64))
-    #学期
-    semester = db.Column(db.String(64))
-    #年级
-    grade = db.Column(db.String(64))
-    #学院名称
-    college_name = db.Column(db.String(64))
-    #系名称
-    d_name = db.Column(db.String(64))
-    #专业名字
-    p_name = db.Column(db.String(64))
-    #专业方向
-    P_direction = db.Column(db.String(64))
-    #班级名字
-    class_name = db.Column(db.String(64))
-    #学制
-    school_system = db.Column(db.String(64))
-    #学籍状态
-    xue_ji_zt = db.Column(db.String(64))
-    #是否在校
-    zai_xiao= db.Column(db.String(64))
-    #报道状态
-    bao_dao_zt= db.Column(db.String(64))
-    #学历层次
-    e_level= db.Column(db.String(64))
-    #培养方式
-    t_method= db.Column(db.String(64))
-    #学生类型
-    student_type = db.Column(db.String(64))
-    #招生学院
-    a_college= db.Column(db.String(64))
-    #招生专业
-    a_profession= db.Column(db.String(64))
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.String(64) ,db.ForeignKey('students.student_id'))
+    school_year= db.Column(db.String(64))    #学年
+    semester = db.Column(db.String(64))    #学期
+    grade = db.Column(db.String(64))    #年级
+    college_name = db.Column(db.String(64))    #学院名称
+    d_name = db.Column(db.String(64))    #系名称
+    p_name = db.Column(db.String(64))    #专业名字
+    class_name = db.Column(db.String(64))    #班级名字
+    school_system = db.Column(db.String(64))    #学制
+    xue_ji_zt = db.Column(db.String(64))    #学籍状态
+    zai_xiao= db.Column(db.String(64))    #是否在校
+    e_level= db.Column(db.String(64))    #学历层次
+    t_method= db.Column(db.String(64))    #培养方式
+    student_type = db.Column(db.String(64))    #学生类型
+    a_college= db.Column(db.String(64))    #招生学院
+    a_profession= db.Column(db.String(64))    #招生专业
 
-
+'''
+成绩信息
+'''
 
 
 

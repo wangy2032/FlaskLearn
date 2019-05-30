@@ -9,6 +9,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 
 
+
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 mail = Mail()
@@ -34,7 +35,7 @@ def create_app(config_name):
     from .student import student as student_blueprint
     app.register_blueprint(student_blueprint, url_prefix='/student')
     #注册老师蓝图
-    from .student import student as student_blueprint
+    from .teacher import teacher as student_blueprint
     app.register_blueprint(student_blueprint, url_prefix='/teacher')
 
     return app

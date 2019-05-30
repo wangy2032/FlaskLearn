@@ -32,15 +32,15 @@ def login():
         }
         user = User.query.filter(*filters).first()
         if user is not None and user.verify_password(form.password.data.strip()):
-            print('a')
             if user.role == '管理员':
                 login_user(user, form.remember.data)
                 return redirect(url_for('admin.index'))
             elif user.role == '学生':
                 login_user(user, form.remember.data)
                 return redirect(url_for('student.index'))
-            elif user.role_id == 3:
-                return render_template('teacher/teacher_index.html')
+            elif user.role == '老师':
+                login_user(user, form.remember.data)
+                return redirect(url_for('teacher.index'))
         flash('你输入的学号或密码不正确')
     return render_template('auth/login.html', form=form)
 
