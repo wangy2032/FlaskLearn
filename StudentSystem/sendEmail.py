@@ -4,6 +4,10 @@ from flask import current_app, render_template
 from threading import Thread
 from . import mail
 
+
+'''
+邮件发送功能
+'''
 #发送异步电子邮件
 def send_async_email(app, msg):
     with app.app_context():

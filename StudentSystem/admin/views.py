@@ -124,7 +124,6 @@ def cpu_data():
 @admin.route('/backstage/ram')
 @login_required
 def show_ram_data():
-
     return render_template('admin/highchars_ram.html')
 
 @admin.route('/ram/data')
