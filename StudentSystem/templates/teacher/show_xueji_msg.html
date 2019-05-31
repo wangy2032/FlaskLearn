@@ -1,0 +1,110 @@
+{% extends "teacher/index.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% from 'bootstrap/pagination.html' import render_pagination %}
+
+{% block title %}System System - Change Password{% endblock %}
+
+
+{% block page_content %}
+<div class="col-md-7 col-md-push-1">
+    <div class="panel panel-default">
+          <div class="panel-heading">
+              {{ student.name }}学籍信息
+          </div>
+          <div class="panel-body">
+                <form method="POST">
+                    {{ form.csrf_token }}
+                      <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <label for="inputEmail4">学号</label>
+                            {{ form.student_id(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputPassword4">姓名</label>
+                            {{ form.name( class="form-control") }}
+                        </div>
+                          <div class="form-group col-md-4">
+                          <label for="inputPassword4">学年</label>
+                              {{ form.school_year(class="form-control") }}
+                        </div>
+                      </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <label for="inputEmail4">学期</label>
+                            {{ form.semester(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputState">年级</label>
+                            {{ form.grade(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputZip">学院名称</label>
+                            {{ form.college_name(class="form-control") }}
+                        </div>
+                      </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                          <label for="inputEmail4">系名称</label>
+                            {{ form.d_name(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-5">
+                          <label for="inputState">专业名称</label>
+                            {{ form.p_name(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputZip">班级名字</label>
+                            {{ form.class_name(class="form-control") }}
+                        </div>
+                      </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                          <label for="inputEmail4">学制</label>
+                            {{ form.school_system(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="inputState">学籍状态</label>
+                            {{ form.xue_ji_zt(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="inputState">招生学院</label>
+                            {{ form.a_college(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="inputState">招生专业</label>
+                            {{ form.a_profession(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                          <label for="inputEmail4">是否在校</label>
+                            {{ form.zai_xiao(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="inputState">学历层次</label>
+                            {{ form.e_level(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="inputZip">培养方式</label>
+                            {{ form.t_method(class="form-control") }}
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="inputZip">学生类型</label>
+                            {{ form.student_type(class="form-control") }}
+                        </div>
+                      </div>
+                    {{ form.modify(class="btn btn-primary btn-lg btn-block") }}
+                </form>
+          </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

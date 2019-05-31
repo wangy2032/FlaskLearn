@@ -36,7 +36,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="">修改密码</a></li>
                         <li><a href="">修改邮箱</a></li>
-                        <li><a href="">退出登陆</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">退出登陆</a></li>
                     </ul>
                 </li>
                 {% else %}
@@ -58,10 +58,10 @@
               <a href="{{ url_for('teacher.index') }}" class="list-group-item">
                     &nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span>&nbsp; 录入学生基本信息
               </a>
-                <a href="" class="list-group-item">
+                <a href="{{ url_for('teacher.add_xueji') }}" class="list-group-item">
                     &nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span>&nbsp; 录入学生学籍信息
               </a>
-                <a href="" class="list-group-item">
+                <a href="{{ url_for('teacher.add_score') }}" class="list-group-item">
                     &nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span>&nbsp; 录入学生成绩信息
               </a>
             </div>

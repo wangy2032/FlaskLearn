@@ -5,7 +5,10 @@ from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-#用户模型
+
+'''
+用户表
+'''
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -53,6 +56,9 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+'''
+学生老师中间表
+'''
 
 student_teacher_table = db.Table(
     'student_teach',
@@ -64,21 +70,17 @@ student_teacher_table = db.Table(
 '''
 class Course(db.Model):
     __tablename__='courses'
-    #课程编号
-    course_id = db.Column(db.String(64), primary_key=True)
-    #课程名称
-    course_name = db.Column(db.String(64))
-    #课程学分
-    course_credit = db.Column(db.String(64))
-    #老师工号
-    teacher_id = db.Column(db.String(64),db.ForeignKey('teachers.teacher_id'))
-    #老师名字
-    teacher = db.Column(db.String(64))
-    #上课教室
-    class_room = db.Column(db.String(64))
-    #课时
-    course_time = db.Column(db.String(64))
+    course_id = db.Column(db.String(64), primary_key=True)#课程编号
+    course_name = db.Column(db.String(64))#课程编号
+    course_credit = db.Column(db.String(64))#课程编号
+    teacher_id = db.Column(db.String(64),db.ForeignKey('teachers.teacher_id'))    #老师工号
+    teacher = db.Column(db.String(64))    #老师名字
+    class_room = db.Column(db.String(64))    #上课教室
+    course_time = db.Column(db.String(64))    #课时
 
+'''
+学生表
+'''
 class Student(db.Model):
     __tablename__='students'
     student_id = db.Column(db.String(64),primary_key=True)
@@ -89,6 +91,9 @@ class Student(db.Model):
                                secondary=student_teacher_table,
                                back_populates='students')
 
+'''
+老师表
+'''
 class Teacher(db.Model):
     __tablename__='teachers'
     teacher_id = db.Column(db.String(64), primary_key=True)
@@ -99,7 +104,9 @@ class Teacher(db.Model):
                                back_populates='teachers')
 
 
-#个人信息
+'''
+基本信息表
+'''
 class Geren(db.Model):
     __tablename__ = 'gerens'
     id = db.Column(db.Integer, primary_key=True)
@@ -120,10 +127,13 @@ class Geren(db.Model):
     place_of_birth= db.Column(db.String(64))    #出生地
     user_image = db.Column(db.String(128))  #张片
 
-#学籍信息
+'''
+学籍信息表
+'''
 class Xueji(db.Model):
     __tablename__ = 'xuejis'
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64)) #姓名
     student_id = db.Column(db.String(64) ,db.ForeignKey('students.student_id'))
     school_year= db.Column(db.String(64))    #学年
     semester = db.Column(db.String(64))    #学期
@@ -142,7 +152,7 @@ class Xueji(db.Model):
     a_profession= db.Column(db.String(64))    #招生专业
 
 '''
-成绩信息
+成绩信息表
 '''
 
 

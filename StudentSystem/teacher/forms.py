@@ -28,3 +28,43 @@ class StudentJiBenMsg(FlaskForm):
     ad_time = DateField('入学时间', validators=[DataRequired()])
     ti_jiao = SubmitField('提交')
     chong_zhi =SubmitField('重置')
+    modify = SubmitField('修改')
+
+
+'''
+学生学籍信息表单
+'''
+class StudentXueJi(FlaskForm):
+    student_id = StringField('学号', validators=[DataRequired()])
+    name = StringField('姓名', validators=[DataRequired()])
+    school_year = StringField('学年', validators=[DataRequired()])
+    semester = SelectField('学期', choices=[('第一学期', '第一学期'),
+                                          ('第二学期', '第二学期')])
+    grade = StringField('年级', validators=[DataRequired()])
+    college_name = StringField('学院名称', validators=[DataRequired()])
+    d_name = StringField('系名称', validators=[DataRequired()])
+    p_name = StringField('专业名称', validators=[DataRequired()])
+    class_name = StringField('班级名字', validators=[DataRequired()])
+    school_system = StringField('学制', validators=[DataRequired()])
+    xue_ji_zt = SelectField('学籍状态', choices=[('注册', '注册'),
+                                          ('没有注册', '没有注册')])
+    zai_xiao = SelectField('是否在校', choices=[('是', '是'),
+                                          ('否', '否')])
+    e_level = SelectField('学历层次', choices=[('专科', '专科'),
+                                          ('本科', '本科'),
+                                           ('硕士', '硕士'),
+                                           ('博士', '博士')])
+    t_method = StringField('培养方式', validators=[DataRequired()])
+    student_type = StringField('学生类型', validators=[DataRequired()])
+    a_college = StringField('招生学院', validators=[DataRequired()])
+    a_profession = StringField('招生专业', validators=[DataRequired()])
+    ti_jiao = SubmitField('提交')
+    chong_zhi = SubmitField('重置')
+    modify = SubmitField('修改')
+
+'''
+搜索表单
+'''
+class SearchForm(FlaskForm):
+    search = StringField('条件', validators=[DataRequired()])
+    submit = SubmitField('搜索')

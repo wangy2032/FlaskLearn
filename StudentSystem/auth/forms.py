@@ -66,6 +66,7 @@ class SearchForm(FlaskForm):
 找回密码表单
 '''
 class RetrievePasswordForm(FlaskForm):
+    id = StringField('账号', validators=[DataRequired(message='邮箱不能为空')])
 
     email = StringField("注册时邮箱", validators=[DataRequired(message='邮箱不能为空'),
                                              Email(message='邮箱格式不正确?')])
@@ -73,4 +74,5 @@ class RetrievePasswordForm(FlaskForm):
                                                Length(6, message='密码长度不得小于6位数')])
     confirm = PasswordField("确认密码", validators=[DataRequired(message='密码不能为空'),
                                                 EqualTo('password', "两次密码不一致")])
+    yan_zheng_ma = StringField("验证码")
     submit = SubmitField("确认")

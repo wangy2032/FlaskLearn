@@ -32,16 +32,11 @@
 <script>
         //短信验证码倒计时
     var countdownHandler = function(){
-        // alert("cdjfhsa")
         var btn = document.getElementById("sendVerifyCode");
-        // btn.innerHTML("fjasfaslfka")
-        // alert(btn)
-        // btn.innerHTML = 'helo'
         var number = 60;
         var countdown = function(){
             if (number == 0) {
                 btn.setAttribute("disabled",false);
-                // btn.html("发送验证码");
                 btn.innerHTML = '发送验证码';
                 number = 60;
                 return;
