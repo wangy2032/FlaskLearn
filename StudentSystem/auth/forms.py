@@ -76,3 +76,6 @@ class RetrievePasswordForm(FlaskForm):
                                                 EqualTo('password', "两次密码不一致")])
     yan_zheng_ma = StringField("验证码")
     submit = SubmitField("确认")
+
+class GetCode(FlaskForm):
+    send_code = SubmitField("发送验证码")

@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, request, url_for, redirect, flash
+from flask import render_template, request, url_for, redirect, flash, jsonify
 from flask_login import login_user, logout_user, current_user, login_required
 from sqlalchemy import or_
 from ..models import User
 from . import auth
 from StudentSystem import db
 from .forms import LoginForm, AddUserForm, ChangePasswordForm, \
-    ChangeEmailForm, AddStudentForm, SearchForm, RetrievePasswordForm
-from ..sendEmail import send_email
+    ChangeEmailForm, AddStudentForm, SearchForm, RetrievePasswordForm, GetCode
+from StudentSystem.sendEmail import send_email, MyRedis
+import string
+import random
 
 
 '''
@@ -100,12 +102,27 @@ def change_email():
     return render_template("auth/change_email.html", form=email_form)
 
 
+
+
 '''
 找回密码路由
 '''
-@auth.route('/retrieve_password')
+@auth.route('/retrieve-password/send-code')
+def send_code_email():
+    email = request.args.get('email')
+    print(email)
+    return jsonify({'error_code':200})
+
+@auth.route('/retrieve-password')
 def retrieve_password():
     form = RetrievePasswordForm()
+    code_from = GetCode()
+    if form.validate_on_submit():
+        email = form.email.data
+        zi_mu_list = list(string.ascii_letters)
+        zi_mu_list.extend(map(lambda x: str(x)), range(0, 10))
+        code = "".join(random.sample(zi_mu_list, 6))
+        MyRedis.set_cache_data(email, code)
     return render_template('auth/forget_password.html', form=form)
 
 
