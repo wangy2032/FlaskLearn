@@ -12,6 +12,7 @@ from StudentSystem.sendEmail import send_email, MyRedis
 import string
 import random
 
+my_redis = MyRedis.connect()
 
 '''
 主页路由
@@ -110,19 +111,30 @@ def change_email():
 @auth.route('/retrieve-password/send-code')
 def send_code_email():
     email = request.args.get('email')
-    print(email)
-    return jsonify({'error_code':200})
+    user = User.query.filter_by(email=email).first()
+    zi_mu_list = list(string.ascii_letters)
+    zi_mu_list.extend(map(lambda x: str(x), range(0, 10)))
+    code = "".join(random.sample(zi_mu_list, 6))
+    MyRedis.set_cache_data(my_redis, email, code)
+    send_email(email, '邮箱验证码', 'auth/email/modify_email', user=user, code=code)
 
-@auth.route('/retrieve-password')
+@auth.route('/retrieve-password', methods=['POST', 'GET'])
 def retrieve_password():
     form = RetrievePasswordForm()
-    code_from = GetCode()
     if form.validate_on_submit():
+        user = User.query.filter_by(student_id=form.id.data).first()
         email = form.email.data
-        zi_mu_list = list(string.ascii_letters)
-        zi_mu_list.extend(map(lambda x: str(x)), range(0, 10))
-        code = "".join(random.sample(zi_mu_list, 6))
-        MyRedis.set_cache_data(email, code)
+        if user and user.email == email:
+            if form.yan_zheng_ma.data == MyRedis.get_cache_data(my_redis, email):
+                user.password = form.password.data
+                db.session.add(user)
+                db.session.commit()
+                flash('修改成功')
+                return redirect(url_for('auth.login'))
+            else:
+                flash('验证码不正确！')
+                return render_template('auth/forget_password.html', form=form)
+        flash('用户不存在或邮箱不正确！')
     return render_template('auth/forget_password.html', form=form)
 
 

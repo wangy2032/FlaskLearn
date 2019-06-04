@@ -26,16 +26,14 @@ class MyRedis:
     def set_cache_data(my_redis, key, value, ex=None):
         my_redis.set(key, pickle.dumps(value), ex)
 
-
-
-'''
-邮件发送功能
-'''
 #发送异步电子邮件
 def send_async_email(app, msg):
     with app.app_context():
         mail.send(msg)
 
+'''
+邮件发送功能
+'''
 #发送邮件
 def send_email(to, subject, template, **kwargs):
     app = current_app._get_current_object()
