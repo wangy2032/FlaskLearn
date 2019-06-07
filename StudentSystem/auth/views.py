@@ -11,6 +11,7 @@ from .forms import LoginForm, AddUserForm, ChangePasswordForm, \
 from StudentSystem.sendEmail import send_email, MyRedis
 import string
 import random
+from datetime import datetime
 
 my_redis = MyRedis.connect()
 
@@ -35,14 +36,23 @@ def login():
         }
         user = User.query.filter(*filters).first()
         if user is not None and user.verify_password(form.password.data.strip()):
-            if user.role == '管理员':
+            if user.role == 'admin':
                 login_user(user, form.remember.data)
+                user.new_login_time = datetime.now()
+                user.login_number += 1
+                db.session.commit()
                 return redirect(url_for('admin.index'))
-            elif user.role == '学生':
+            elif user.role == 'student':
                 login_user(user, form.remember.data)
+                user.new_login_time = datetime.now()
+                user.login_number += 1
+                db.session.commit()
                 return redirect(url_for('student.index'))
-            elif user.role == '老师':
+            elif user.role == 'teacher':
                 login_user(user, form.remember.data)
+                user.new_login_time = datetime.now()
+                user.login_number += 1
+                db.session.commit()
                 return redirect(url_for('teacher.index'))
         flash('你输入的学号或密码不正确')
     return render_template('auth/login.html', form=form)

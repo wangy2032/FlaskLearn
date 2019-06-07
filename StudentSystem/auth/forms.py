@@ -41,7 +41,7 @@ class AddUserForm(FlaskForm):
     student_id = StringField('学号', validators=[DataRequired()])
     email = StringField('邮箱', validators=[DataRequired()])
     password = StringField('密码', validators=[DataRequired()])
-    role = RadioField('身份', choices=[('学生', '学生'), ('教师', '教师')], default='学生')
+    role = RadioField('身份', choices=[('student', '学生'), ('teacher', '老师')], default='学生')
     submit = SubmitField('添加账户')
 
 '''

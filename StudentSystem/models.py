@@ -5,7 +5,7 @@ from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-
+from datetime import datetime
 '''
 用户表
 '''
@@ -16,10 +16,10 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True)
     email = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    # confirmed = db.Column(db.Boolean(),default=False)
-    confirmed = db.Column(db.String(64), default='否')
-    # role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     role = db.Column(db.String(128))
+    create_time = db.Column(db.DateTime(), default=datetime.now())
+    new_login_time = db.Column(db.DateTime(), default=datetime.now())
+    login_number = db.Column(db.Integer(), default=0)
 
     @property
     def password(self):
@@ -32,23 +32,6 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    # 生成确认令牌
-    def getToken(self, expiration=3600):
-        s = Serializer(current_app.config['SECRET_KEY'], expiration)
-        return s.dumps({'confirm': self.id}).decode('utf-8')
-
-    #确认令牌
-    def confirm(self, token):
-        s = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            data = s.loads(token.encode('utf-8'))
-        except:
-            return False
-        if data.get('confirm') != self.id:
-            return False
-        self.confirmed = True
-        db.session.add(self)
-        return True
 
 # # 用户加载函数
 from . import login_manager

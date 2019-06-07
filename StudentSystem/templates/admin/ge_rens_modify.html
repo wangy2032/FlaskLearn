@@ -9,7 +9,7 @@
 <div class="col-md-7 col-md-push-1">
     <div class="panel panel-default">
           <div class="panel-heading">
-              录入基本信息
+              {{ user.name }}基本信息
           </div>
           <div class="panel-body">
                 <form method="POST">
@@ -136,17 +136,10 @@
                             {{ form.ad_time(class="form-control") }}
                         </div>
                       </div>
-                    <div class="form-group col-md-6">
-                          {{ form.ti_jiao(class="btn btn-primary btn-lg btn-block") }}
+                    <div class="form-group col-md-12">
+                          {{ form.modify(class="btn btn-primary btn-lg btn-block") }}
                         </div>
                 </form>
-              <div class="col-lg-6">
-                          <button class="btn btn-secondary btn-lg btn-block">
-                              <a style='text-decoration:none; color:#FFFFFF'
-                           href="{{ url_for('admin.add_geren_message')}}">
-                            重置</a></button>
-                          </button>
-                      </div>
           </div>
         </div>
     </div>

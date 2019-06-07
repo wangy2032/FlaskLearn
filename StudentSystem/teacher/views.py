@@ -8,9 +8,9 @@ from StudentSystem.teacher.forms import StudentJiBenMsg, StudentXueJi, SearchFor
 from datetime import datetime
 
 
-'''
+"""
 录入学生信息
-'''
+"""
 @teacher.route('/ji-ben-msg/add', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -50,12 +50,12 @@ def index():
             return redirect(url_for('teacher.index'))
     return render_template('teacher/add_student_jiben.html',search_form=search_form, form=form, **contxt)
 
-'''
-查看基本信息
-'''
 @teacher.route('/<student_id>/ji-ben-msg/show')
 @login_required
 def show(student_id):
+    '''
+    查看基本信息
+    '''
     geren = Geren.query.filter_by(student_id=student_id).first()
     form = StudentJiBenMsg()
     form.student_id.data = geren.student_id
