@@ -28,12 +28,13 @@ class User(UserMixin, db.Model):
     @password.setter
     def password(self,password):
         self.password_hash = generate_password_hash(password)
+
     #用于校验输入的密码和数据库你的密码是否相等
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
 
-# # 用户加载函数
+# 用户加载函数
 from . import login_manager
 @login_manager.user_loader
 def load_user(user_id):
@@ -137,6 +138,7 @@ class Xueji(db.Model):
 '''
 成绩信息表
 '''
+
 
 
 

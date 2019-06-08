@@ -16,79 +16,147 @@
                     {{ form.csrf_token }}
                       <div class="form-row">
                         <div class="form-group col-md-4">
-                          <label for="inputEmail4">学号</label>
+                          <label for="inputEmail4">学号
+                          {% for error in form.student_id.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.student_id(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputPassword4">姓名</label>
+                          <label for="inputPassword4">姓名
+                          {% for error in form.name.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.name( class="form-control") }}
                         </div>
                           <div class="form-group col-md-4">
-                          <label for="inputPassword4">学年</label>
+                          <label for="inputPassword4">学年
+                          {% for error in form.school_year.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                               {{ form.school_year(class="form-control") }}
                         </div>
                       </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                          <label for="inputEmail4">学期</label>
+                          <label for="inputEmail4">学期
+                          {% for error in form.semester.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.semester(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputState">年级</label>
+                          <label for="inputState">年级
+                          {% for error in form.grade.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.grade(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputZip">学院名称</label>
+                          <label for="inputZip">学院名称
+                          {% for error in form.college_name.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.college_name(class="form-control") }}
                         </div>
                       </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                          <label for="inputEmail4">系名称</label>
+                          <label for="inputEmail4">系名称
+                          {% for error in form.d_name.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.d_name(class="form-control") }}
                         </div>
                         <div class="form-group col-md-5">
-                          <label for="inputState">专业名称</label>
+                          <label for="inputState">专业名称
+                          {% for error in form.p_name.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.p_name(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputZip">班级名字</label>
+                          <label for="inputZip">班级名字
+                          {% for error in form.class_name.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.class_name(class="form-control") }}
                         </div>
                       </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                          <label for="inputEmail4">学制</label>
+                          <label for="inputEmail4">学制
+                          {% for error in form.school_system.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.school_system(class="form-control") }}
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="inputState">学籍状态</label>
+                          <label for="inputState">学籍状态
+                          {% for error in form.xue_ji_zt.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.xue_ji_zt(class="form-control") }}
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="inputState">招生学院</label>
+                          <label for="inputState">招生学院
+                          {% for error in form.a_college.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.a_college(class="form-control") }}
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="inputState">招生专业</label>
+                          <label for="inputState">招生专业
+                          {% for error in form.a_profession.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.a_profession(class="form-control") }}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                          <label for="inputEmail4">是否在校</label>
+                          <label for="inputEmail4">是否在校
+                          {% for error in form.zai_xiao.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.zai_xiao(class="form-control") }}
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="inputState">学历层次</label>
+                          <label for="inputState">学历层次
+                          {% for error in form.e_level.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.e_level(class="form-control") }}
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="inputZip">培养方式</label>
+                          <label for="inputZip">培养方式
+                          {% for error in form.t_method.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.t_method(class="form-control") }}
                         </div>
                         <div class="form-group col-md-3">
-                          <label for="inputZip">学生类型</label>
+                          <label for="inputZip">学生类型
+                          {% for error in form.student_type.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.student_type(class="form-control") }}
                         </div>
                         <div class="col-lg-6">

@@ -9,8 +9,7 @@ from StudentSystem import db
 from .forms import LoginForm, AddUserForm, ChangePasswordForm, \
     ChangeEmailForm, AddStudentForm, SearchForm, RetrievePasswordForm, GetCode
 from StudentSystem.sendEmail import send_email, MyRedis
-import string
-import random
+import string, random
 from datetime import datetime
 
 my_redis = MyRedis.connect()
@@ -121,12 +120,16 @@ def change_email():
 @auth.route('/retrieve-password/send-code')
 def send_code_email():
     email = request.args.get('email')
-    user = User.query.filter_by(email=email).first()
-    zi_mu_list = list(string.ascii_letters)
-    zi_mu_list.extend(map(lambda x: str(x), range(0, 10)))
-    code = "".join(random.sample(zi_mu_list, 6))
-    MyRedis.set_cache_data(my_redis, email, code)
-    send_email(email, '邮箱验证码', 'auth/email/modify_email', user=user, code=code)
+    id = request.args.get('id')
+    user = User.query.filter_by(email=email, student_id=id).first()
+    if user:
+        zi_mu_list = list(string.ascii_letters)
+        zi_mu_list.extend(map(lambda x: str(x), range(0, 10)))
+        code = "".join(random.sample(zi_mu_list, 6))
+        MyRedis.set_cache_data(my_redis, email, code)
+        send_email(email, '邮箱验证码', 'auth/email/modify_email', user=user, code=code)
+        return jsonify({'data':1})
+    return jsonify({'data': 0})
 
 @auth.route('/retrieve-password', methods=['POST', 'GET'])
 def retrieve_password():

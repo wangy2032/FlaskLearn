@@ -3,19 +3,18 @@ from wtforms import StringField, SubmitField, PasswordField, SelectField\
     ,DateField
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from StudentSystem.models import Geren
+from StudentSystem.models import Geren, Teacher, db, User, Student, Course, Xueji
 
 '''
 学生基本信息表单
 '''
 class StudentJiBenMsg(FlaskForm):
-    def validate_student_id(form, field):
-        student_id = field.data
-        user = Geren.query.filter_by(student_id=student_id).first()
-        if user:
-            raise ValidationError("昵称已存在")
+    def __init__(self):
+        super().__init__()
+        self.student_id.choices = [(student.student_id, student.student_id) for student in db.session.query(Student).all()]
 
-    student_id = StringField('学号', validators=[DataRequired(), validate_student_id, Length(11, message='长度为11')])
+
+    student_id = SelectField('学号')
     name = StringField('姓名', validators=[DataRequired()])
     used_name = StringField('曾用名')
     p_status = SelectField('政治面貌',
@@ -39,7 +38,16 @@ class StudentJiBenMsg(FlaskForm):
 学生学籍信息表单
 '''
 class StudentXueJi(FlaskForm):
-    student_id = StringField('学号', validators=[DataRequired()])
+    def __init__(self):
+        super().__init__()
+        self.student_id.choices = [(student.student_id, student.student_id) for student in db.session.query(Student).all()]
+
+    def check_xue_ji(form, field):
+        xue_ji = Xueji.query.filter_by(student_id=field.data).first()
+        if xue_ji:
+            raise ValidationError('此学生学籍已存在')
+
+    student_id = SelectField('学号',validators=[check_xue_ji])
     name = StringField('姓名', validators=[DataRequired()])
     school_year = StringField('学年', validators=[DataRequired()])
     semester = SelectField('学期', choices=[('第一学期', '第一学期'),
@@ -84,7 +92,7 @@ class SearchForm(FlaskForm):
 账户修改表单
 '''
 class ModifyUserForm(FlaskForm):
-    id = StringField('工号')
+    id = StringField('工号或学号')
     username = StringField('姓名')
     email = StringField('邮箱')
     password = PasswordField('修改密码')
@@ -98,9 +106,19 @@ class ModifyUserForm(FlaskForm):
 添加账户
 '''
 class AddTeacherForm(FlaskForm):
-    number = StringField('工号')
+    def check_user(form, field):
+        student_id = field.data
+        user = User.query.filter_by(student_id=student_id).first()
+        if user:
+            raise ValidationError('用户存在')
+    def check_email(form, field):
+        email = field.data
+        user = User.query.filter_by(email=email).first()
+        if user:
+            raise ValidationError('邮箱已使用')
+    number = StringField('工号', validators=[check_user])
     username = StringField('姓名')
-    email = StringField('邮箱')
+    email = StringField('邮箱', validators=[check_email])
     password = StringField('默认密码')
     identity = SelectField('身份',
                            choices= [("student", '学生'), ("teacher", '老师'), ("admin", '管理员')],
@@ -125,15 +143,45 @@ class ChangeEmailForm(FlaskForm):
     verify_code = StringField('验证码')
     submit = SubmitField('修改邮箱')
 
+
+
 '''
 添加课程表单
 '''
 class AddCourses(FlaskForm):
-    course_id = StringField('课程编号')
-    course_name = StringField('课程名字')
-    course_credit=StringField('课程学分')
-    teacher_id = StringField('老师工号')
+    def __init__(self):
+        super().__init__()
+        self.teacher_id.choices = [(te.teacher_id, te.teacher_id) for te in db.session.query(Teacher).all()]
+
+    def check_course(form, field):
+        course_id = field.data
+        course = Course.query.filter_by(course_id=course_id).first()
+        if course:
+            raise ValidationError('课程存在')
+    course_id = StringField('课程编号', validators=[DataRequired(), Length(1,6, message="长度过长"), check_course])
+    course_name = StringField('课程名字', validators=[DataRequired()])
+    course_credit=StringField('课程学分', validators=[DataRequired(), Length(1,3, message='长度过长')])
+    teacher_id = SelectField('老师工号')
     teacher_name = StringField('老师名字')
-    class_room = StringField('上课教室')
-    course_time = StringField('课程时长')
+    class_room = StringField('授课地点', validators=[DataRequired()])
+    course_time = StringField('课程时长', validators=[DataRequired()])
     submit = SubmitField('提交')
+    modify = SubmitField('修改')
+
+'''
+添加课程表单
+'''
+class ModifyCourses(FlaskForm):
+    def __init__(self):
+        super().__init__()
+        self.teacher_id.choices = [(te.teacher_id, te.teacher_id) for te in db.session.query(Teacher).all()]
+    course_id = StringField('课程编号', validators=[DataRequired(), Length(1,6, message="长度过长")])
+    course_name = StringField('课程名字', validators=[DataRequired()])
+    course_credit=StringField('课程学分', validators=[DataRequired(), Length(1,3, message='长度过长')])
+    teacher_id = SelectField('老师工号')
+    teacher_name = StringField('老师名字')
+    class_room = StringField('授课地点', validators=[DataRequired()])
+    course_time = StringField('课程时长', validators=[DataRequired()])
+    submit = SubmitField('提交')
+    modify = SubmitField('修改')
+

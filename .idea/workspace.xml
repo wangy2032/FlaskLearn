@@ -121,37 +121,37 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="4" />
-          <entry key="html" value="11547" />
+          <entry key="html" value="12336" />
           <entry key="js" value="2" />
-          <entry key="py" value="22260" />
+          <entry key="py" value="26384" />
           <entry key="txt" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="11547" />
+          <entry key="HTML" value="12336" />
           <entry key="JavaScript" value="2" />
           <entry key="PLAIN_TEXT" value="32" />
-          <entry key="Python" value="22260" />
+          <entry key="Python" value="26384" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="261" />
+          <entry key="html" value="294" />
           <entry key="ini" value="1" />
           <entry key="js" value="10" />
-          <entry key="py" value="188" />
+          <entry key="py" value="198" />
           <entry key="pyi" value="1" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="261" />
+          <entry key="HTML" value="294" />
           <entry key="Ini" value="1" />
           <entry key="JavaScript" value="10" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="188" />
+          <entry key="Python" value="198" />
           <entry key="PythonStub" value="1" />
         </counts>
       </usages-collector>
@@ -162,84 +162,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StudentSystem/admin/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-549">
-              <caret line="404" column="3" lean-forward="true" selection-start-line="404" selection-start-column="3" selection-end-line="404" selection-end-column="3" />
+            <state relative-caret-position="442">
+              <caret line="562" column="27" lean-forward="true" selection-start-line="562" selection-start-column="27" selection-end-line="562" selection-end-column="27" />
               <folding>
                 <element signature="e#24#43#0" expanded="true" />
-                <marker date="1559906560745" expanded="true" signature="548:553" ph="..." />
-                <marker date="1559906560745" expanded="true" signature="4834:4835" ph="..." />
-                <marker date="1559906560745" expanded="true" signature="9914:9919" ph="..." />
-                <marker date="1559906560745" expanded="true" signature="13815:13820" ph="..." />
-                <marker date="1559906560745" expanded="true" signature="14239:14244" ph="..." />
-                <marker date="1559906560745" expanded="true" signature="14425:14430" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/user_show.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="45" column="49" lean-forward="true" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_show.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#button#1;n#td#6;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_modify.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="147" column="35" lean-forward="true" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1559995378345" expanded="true" signature="625:630" ph="..." />
+                <marker date="1559995378345" expanded="true" signature="6377:6378" ph="..." />
+                <marker date="1559995378345" expanded="true" signature="11457:11462" ph="..." />
+                <marker date="1559995378345" expanded="true" signature="15358:15363" ph="..." />
+                <marker date="1559995378345" expanded="true" signature="15782:15787" ph="..." />
+                <marker date="1559995378345" expanded="true" signature="16529:16534" ph="..." />
+                <marker date="1559995378345" expanded="true" signature="16707:17655" ph="..." />
+                <marker date="1559995378345" expanded="true" signature="17743:17964" ph="..." />
               </folding>
             </state>
           </provider>
@@ -248,25 +182,52 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StudentSystem/admin/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="25">
+              <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
               <folding>
                 <element signature="e#24#112#0" expanded="true" />
-                <marker date="1559906372127" expanded="true" signature="362:528" ph="..." />
+                <marker date="1559995107846" expanded="true" signature="387:539" ph="..." />
+                <marker date="1559995107846" expanded="true" signature="539:545" ph="..." />
+                <marker date="1559995107846" expanded="true" signature="1913:2054" ph="..." />
+                <marker date="1559995107846" expanded="true" signature="4532:4841" ph="..." />
+                <marker date="1559995107846" expanded="true" signature="5586:5591" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/flask_sqlalchemy/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-102">
+              <caret line="120" selection-start-line="120" selection-end-line="120" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StudentSystem/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-275">
-              <caret line="103" column="43" lean-forward="true" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
+            <state relative-caret-position="172">
+              <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="144" />
               <folding>
                 <element signature="e#25#41#0" expanded="true" />
-                <marker date="1559878237631" expanded="true" signature="2863:2865" ph="..." />
-                <marker date="1559878237631" expanded="true" signature="2902:3761" ph="..." />
+                <marker date="1559997479932" expanded="true" signature="1074:1079" ph="..." />
+                <marker date="1559997479932" expanded="true" signature="2862:2864" ph="..." />
+                <marker date="1559997479932" expanded="true" signature="2901:3760" ph="..." />
+                <marker date="1559997479932" expanded="true" signature="4746:4750" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StudentSystem/sendEmail.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding>
+                <element signature="e#24#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -296,10 +257,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/user_add.html" />
-        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/user_modify.html" />
-        <option value="$PROJECT_DIR$/StudentSystem/main/forms.py" />
-        <option value="$PROJECT_DIR$/StudentSystem/teacher/__init__.py" />
         <option value="$PROJECT_DIR$/StudentSystem/main/views.py" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/index.html" />
         <option value="$PROJECT_DIR$/StudentFlask.py" />
@@ -307,8 +264,6 @@
         <option value="$PROJECT_DIR$/StudentSystem/templates/student/change_password.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/student/change_email.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/student/xue_ji_msg.html" />
-        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/course_show.html" />
-        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/course_add.html" />
         <option value="$PROJECT_DIR$/StudentSystem/student/views.py" />
         <option value="$PROJECT_DIR$/StudentSystem/__init__.py" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/teacher/add_student_score.html" />
@@ -324,9 +279,6 @@
         <option value="$PROJECT_DIR$/StudentSystem/templates/auth/email/modify_email.txt" />
         <option value="$PROJECT_DIR$/StudentSystem/sendEmail.py" />
         <option value="$PROJECT_DIR$/StudentSystem/auth/forms.py" />
-        <option value="$PROJECT_DIR$/StudentSystem/models.py" />
-        <option value="$PROJECT_DIR$/StudentSystem/auth/views.py" />
-        <option value="$PROJECT_DIR$/StudentSystem/templates/auth/forget_password.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/add_student_msg.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/teacher/add_student_jiben.html" />
         <option value="$PROJECT_DIR$/StudentSystem/teacher/forms.py" />
@@ -337,16 +289,25 @@
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_msg_modify.py" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_msg_modify.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_show.html" />
-        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_modify.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_modify.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_show.html" />
-        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_add.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_add.html" />
-        <option value="$PROJECT_DIR$/StudentSystem/admin/forms.py" />
-        <option value="$PROJECT_DIR$/StudentSystem/admin/views.py" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/user_guanli_show.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/change_password.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/course_add.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/user_add.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/user_show.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/user_modify.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/course_show.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/course_modify.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_modify.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_add.html" />
         <option value="$PROJECT_DIR$/StudentSystem/templates/admin/change_email.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/templates/auth/forget_password.html" />
+        <option value="$PROJECT_DIR$/StudentSystem/auth/views.py" />
+        <option value="$PROJECT_DIR$/StudentSystem/admin/forms.py" />
+        <option value="$PROJECT_DIR$/StudentSystem/admin/views.py" />
+        <option value="$PROJECT_DIR$/StudentSystem/models.py" />
       </list>
     </option>
   </component>
@@ -357,8 +318,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="172" />
-    <option name="y" value="38" />
+    <option name="x" value="272" />
+    <option name="y" value="62" />
     <option name="width" value="1535" />
     <option name="height" value="929" />
   </component>
@@ -400,6 +361,12 @@
               <item name="StudentSystemFlask" type="b2602c69:ProjectViewProjectNode" />
               <item name="StudentSystemFlask" type="462c0819:PsiDirectoryNode" />
               <item name="StudentSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentSystemFlask" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentSystemFlask" type="462c0819:PsiDirectoryNode" />
+              <item name="StudentSystem" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -408,6 +375,13 @@
               <item name="StudentSystem" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="StudentSystemFlask" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StudentSystemFlask" type="462c0819:PsiDirectoryNode" />
+              <item name="StudentSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -572,6 +546,29 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22922252" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32599118" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28340676" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24669604" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32892805" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50268096" side_tool="true" weight="0.06461087" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49731904" visible="true" weight="0.5859031" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32991204" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22922252" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -586,30 +583,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32892805" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50268096" side_tool="true" weight="0.06461087" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731904" weight="0.11453745" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32991204" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21514745" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32599118" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46549192" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44428152" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5013405" side_tool="true" weight="0.34457478" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49865952" visible="true" weight="0.2966226" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49731904" weight="0.62995595" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32991204" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -625,80 +599,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/remove_user.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/base1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="71" column="14" lean-forward="true" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/teacher/add_student_score.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="85" column="16" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/change_password.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/change_email.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/teacher/show_geren_msg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/teacher/show_xueji_msg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/student/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-208">
-          <caret line="57" column="15" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/student/ji_ben_msg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentSystem/admin/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#35#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/highchars_cpu.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -752,25 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/sendEmail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="34" column="6" lean-forward="true" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
-          <folding>
-            <element signature="e#24#54#0" expanded="true" />
-            <marker date="1559666429500" expanded="true" signature="214:727" ph="..." />
-            <marker date="1559666429500" expanded="true" signature="421:512" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/forget_password.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="71" column="22" lean-forward="true" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/email/confirm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -807,17 +690,6 @@
           <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/auth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1239">
-          <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
-          <folding>
-            <element signature="e#25#102#0" expanded="true" />
-            <marker date="1559878503404" expanded="true" signature="638:681" ph="..." />
           </folding>
         </state>
       </provider>
@@ -878,27 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/course_show.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-564">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/auth/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-358">
-          <caret line="47" column="8" lean-forward="true" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
-          <folding>
-            <element signature="e#24#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentFlask.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -943,18 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-275">
-          <caret line="103" column="43" lean-forward="true" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
-          <folding>
-            <element signature="e#25#41#0" expanded="true" />
-            <marker date="1559878237631" expanded="true" signature="2863:2865" ph="..." />
-            <marker date="1559878237631" expanded="true" signature="2902:3761" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_modify.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-25">
@@ -978,16 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_show.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#button#1;n#td#6;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/_ram.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1004,27 +833,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_modify.html">
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/change_password.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
+        <state relative-caret-position="350">
+          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_add.html">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/flask_wtf/form.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+        <state relative-caret-position="331">
+          <caret line="146" column="6" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/wtforms/ext/sqlalchemy/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/user_show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="53" column="59" lean-forward="true" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/user_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#4;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#5;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/user_modify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="48" column="87" selection-start-line="48" selection-start-column="87" selection-end-line="48" selection-end-column="87" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#4;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#5;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/flask_login/login_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9119">
+          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="21" column="47" lean-forward="true" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+          <folding>
+            <element signature="e#35#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/student_score_show.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/ge_rens_add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="147" column="35" lean-forward="true" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
+        <state relative-caret-position="3000">
+          <caret line="126" column="34" lean-forward="true" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
           <folding>
             <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -1045,51 +933,213 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/admin/forms.py">
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/course_show.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="375">
+          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
           <folding>
-            <element signature="e#24#112#0" expanded="true" />
-            <marker date="1559906372127" expanded="true" signature="362:528" ph="..." />
+            <element signature="n#style#0;n#a#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/admin/views.py">
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/course_add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-549">
-          <caret line="404" column="3" lean-forward="true" selection-start-line="404" selection-start-column="3" selection-end-line="404" selection-end-column="3" />
+        <state relative-caret-position="725">
+          <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
           <folding>
-            <element signature="e#24#43#0" expanded="true" />
-            <marker date="1559906560745" expanded="true" signature="548:553" ph="..." />
-            <marker date="1559906560745" expanded="true" signature="4834:4835" ph="..." />
-            <marker date="1559906560745" expanded="true" signature="9914:9919" ph="..." />
-            <marker date="1559906560745" expanded="true" signature="13815:13820" ph="..." />
-            <marker date="1559906560745" expanded="true" signature="14239:14244" ph="..." />
-            <marker date="1559906560745" expanded="true" signature="14425:14430" ph="..." />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#2;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/course_modify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="73" column="22" lean-forward="true" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#1;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#2;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#button#1;n#td#6;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_modify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/xue_ji_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="23" column="71" lean-forward="true" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/change_email.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        <state relative-caret-position="150">
+          <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/change_password.html">
+    <entry file="file://$PROJECT_DIR$/StudentSystem/auth/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="61">
+          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+          <folding>
+            <element signature="e#24#55#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/admin/user_show.html">
+    <entry file="file://$PROJECT_DIR$/StudentSystem/auth/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="45" column="49" lean-forward="true" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+        <state relative-caret-position="201">
+          <caret line="135" column="25" lean-forward="true" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
+          <folding>
+            <element signature="e#25#102#0" expanded="true" />
+            <marker date="1559995093958" expanded="true" signature="632:675" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/admin/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="562" column="27" lean-forward="true" selection-start-line="562" selection-start-column="27" selection-end-line="562" selection-end-column="27" />
+          <folding>
+            <element signature="e#24#43#0" expanded="true" />
+            <marker date="1559995378345" expanded="true" signature="625:630" ph="..." />
+            <marker date="1559995378345" expanded="true" signature="6377:6378" ph="..." />
+            <marker date="1559995378345" expanded="true" signature="11457:11462" ph="..." />
+            <marker date="1559995378345" expanded="true" signature="15358:15363" ph="..." />
+            <marker date="1559995378345" expanded="true" signature="15782:15787" ph="..." />
+            <marker date="1559995378345" expanded="true" signature="16529:16534" ph="..." />
+            <marker date="1559995378345" expanded="true" signature="16707:17655" ph="..." />
+            <marker date="1559995378345" expanded="true" signature="17743:17964" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/sendEmail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <element signature="e#24#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-94" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/templates/auth/forget_password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/admin/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
+          <folding>
+            <element signature="e#24#112#0" expanded="true" />
+            <marker date="1559995107846" expanded="true" signature="387:539" ph="..." />
+            <marker date="1559995107846" expanded="true" signature="539:545" ph="..." />
+            <marker date="1559995107846" expanded="true" signature="1913:2054" ph="..." />
+            <marker date="1559995107846" expanded="true" signature="4532:4841" ph="..." />
+            <marker date="1559995107846" expanded="true" signature="5586:5591" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/flask_sqlalchemy/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StudentSystem/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="144" />
+          <folding>
+            <element signature="e#25#41#0" expanded="true" />
+            <marker date="1559997479932" expanded="true" signature="1074:1079" ph="..." />
+            <marker date="1559997479932" expanded="true" signature="2862:2864" ph="..." />
+            <marker date="1559997479932" expanded="true" signature="2901:3760" ph="..." />
+            <marker date="1559997479932" expanded="true" signature="4746:4750" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

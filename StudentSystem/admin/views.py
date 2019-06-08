@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 from . import admin
-from flask import render_template, flash, request, redirect, url_for
-from StudentSystem.models import User, Course, Geren, Student, Teacher, Xueji
+from flask import render_template, flash, request, redirect, url_for, jsonify
+from StudentSystem.models import User, Course, Geren, Student, Teacher, Xueji, db
 from flask_login import login_required, current_user
 from .forms import SearchForm, ModifyUserForm, AddTeacherForm, \
-    ChangePasswordForm, ChangeEmailForm, AddCourses, StudentJiBenMsg, StudentXueJi
+    ChangePasswordForm, ChangeEmailForm, AddCourses, StudentJiBenMsg, StudentXueJi, ModifyCourses
 from sqlalchemy import or_, and_
-from StudentSystem import db
-import psutil, json
+import psutil, json, string, redis, random
+from StudentSystem.sendEmail import send_email,MyRedis
 
 
 
@@ -99,11 +99,17 @@ def teacher_delete(id):
     '''
     删除账户按钮路由
     '''
-    user = User.query.get_or_404(id)
+    user = User.query.filter_by(student_id=id).first()
+    if user.role == 'teacher':
+        teacher = Teacher.query.filter_by(teacher_id=id).first()
+        db.session.delete(teacher)
+    if user.role == 'student':
+        student = Student.query.filter_by(student_id=id).first()
+        db.session.delete(student)
     db.session.delete(user)
     db.session.commit()
     flash('删除成功！')
-    return redirect(url_for('.teacher_user'))
+    return redirect(url_for('admin.account_number_show'))
 
 @admin.route('student/<id>/modify', methods=['GET', 'POST'])
 @login_required
@@ -113,17 +119,37 @@ def teacher_modify(id):
     '''
     form = ModifyUserForm()
     user = User.query.filter_by(student_id=id).first()
-    form.id.data = user.student_id
-    form.username.data = user.username
-    form.email.data = user.email
     if form.validate_on_submit():
         user.student_id=form.id.data
         user.username=form.username.data
         user.email=form.email.data
-        user.password = form.password.data
+        if form.password.data:
+            user.password = form.password.data
         user.role=form.identify.data
+        print(form.identify.data)
+        if form.identify.data == 'teacher':
+            teacher_tmp = Teacher.query.filter_by(teacher_id=form.id.data).first()
+            if not teacher_tmp:
+                teacher = Teacher(teacher_id=form.id.data, name=form.username.data)
+                tmp = Student.query.filter_by(student_id=form.id.data).first()
+                if tmp:
+                    db.session.delete(tmp)
+                db.session.add(teacher)
+        if form.identify.data == 'student':
+            student_tmp = Student.query.filter_by(student_id=form.id.data).first()
+            if not student_tmp:
+                student = Student(student_id=form.id.data, name=form.username.data)
+                tmp = Teacher.query.filter_by(teacher_id=form.id.data).first()
+                if tmp:
+                    db.session.delete(tmp)
+                db.session.add(student)
         db.session.commit()
+        flash('更新成功')
         return redirect(url_for('.account_number_show'))
+    form.id.data = user.student_id
+    form.username.data = user.username
+    form.email.data = user.email
+    form.identify.data = user.role
     return render_template('admin/user_modify.html', form =form)
 
 @admin.route('/teacher/user/add', methods=['GET', 'POST'])
@@ -143,13 +169,15 @@ def teacher_add():
             role=form.identity.data
         )
         if form.identity.data == 'student':
-            student = Student(student_id=form.number.data, name=form.username.data)
-            db.session.add(student)
-            db.session.commit()
+            student_tmp = Student.query.filter_by(student_id=form.number.data).first()
+            if not student_tmp:
+                student = Student(student_id=form.number.data, name=form.username.data)
+                db.session.add(student)
         elif form.identity.data == 'teacher':
-            teacher = Teacher(teacher_id=form.number.data, name=form.username.data)
-            db.session.add(teacher)
-            db.session.commit()
+            teacher_tmp = Teacher.query.filter_by(teacher_id=form.number.data).first()
+            if not teacher_tmp:
+                teacher = Teacher(teacher_id=form.number.data, name=form.username.data)
+                db.session.add(teacher)
         db.session.add(user)
         db.session.commit()
         flash('添加成功')
@@ -429,14 +457,63 @@ def course_show():
     form = SearchForm()
     return render_template("admin/course_show.html", form=form, **contxt)
 
-@admin.route('/course/add')
+@admin.route('/course/add', methods=['GET', 'POST'])
 @login_required
 def add_course():
     '''
     添加课程
     '''
     form = AddCourses()
+    course = Course(
+        course_id=form.course_id.data,
+        course_name=form.course_name.data,
+        course_credit=form.course_credit.data,
+        teacher_id=form.teacher_id.data,
+        teacher=form.teacher_name.data,
+        class_room=form.class_room.data,
+        course_time=form.course_time.data
+    )
+    if form.validate_on_submit():
+        if form.submit.data:
+            db.session.add(course)
+            db.session.commit()
+            flash('添加课程成功')
+            return redirect(url_for('admin.course_show'))
     return render_template('admin/course_add.html', form=form)
+
+@admin.route('/course/<course_id>/modify', methods=['GET', 'POST'])
+@login_required
+def course_modify(course_id):
+    form = ModifyCourses()
+    course = Course.query.filter_by(course_id=course_id).first()
+    if form.validate_on_submit():
+        course.course_id = form.course_id.data
+        course.course_name = form.course_name.data
+        course.course_credit = form.course_credit.data
+        course.teacher_id = form.teacher_id.data
+        course.teacher = form.teacher_name.data
+        course.class_room = form.class_room.data
+        course.course_time = form.course_time.data
+        db.session.commit()
+        return redirect(url_for('admin.course_show'))
+    form.course_id.data = course.course_id
+    form.course_name.data = course.course_name
+    form.course_credit.data = course.course_credit
+    form.teacher_id.data = course.teacher_id
+    form.teacher_name.data = course.teacher
+    form.class_room.data = course.class_room
+    form.course_time.data = course.course_time
+    return render_template('admin/course_modify.html', form=form)
+
+@admin.route('/course/<course_id>/delete')
+@login_required
+def course_delete(course_id):
+    course = Course.query.filter_by(course_id=course_id).first()
+    if course:
+        db.session.delete(course)
+        db.session.commit()
+        flash('删除成功')
+        return redirect(url_for('admin.course_show'))
 
 
 """
@@ -452,7 +529,7 @@ def change_password():
             db.session.add(current_user)
             db.session.commit()
             flash('密码重设成功')
-            return redirect(url_for('main.base'))
+            return redirect(url_for('admin.change_password'))
         else:
             flash('原密码不正确')
     return render_template("admin/change_password.html", form=form)
@@ -460,10 +537,28 @@ def change_password():
 """
 修改邮箱(公共部分)
 """
+my_redis = MyRedis.connect()
+@admin.route('/retrieve-password/send-code')
+def send_code_email():
+    email = request.args.get('email')
+    user = User.query.filter_by(email=email).first()
+    if user:
+        zi_mu_list = list(string.ascii_letters)
+        zi_mu_list.extend(map(lambda x: str(x), range(0, 10)))
+        code = "".join(random.sample(zi_mu_list, 6))
+        MyRedis.set_cache_data(my_redis, email, code)
+        send_email(email, '邮箱验证码', 'auth/email/modify_email', user=user, code=code)
+        return jsonify({'data':1})
+    return jsonify({'data': 0})
+
 @admin.route('/change/email', methods=['GET', 'POST'])
 @login_required
 def change_email():
     email_form = ChangeEmailForm()
-    # user = User.query.filter_by(email=email_form.old_email.data).first()
-    # send_email(user.email, '修改邮箱验证码', 'auth/email/modify_email',)
+    user = User.query.filter_by(email=email_form.old_email.data).first()
+    if user:
+        send_email(user.email, '修改邮箱验证码', 'auth/email/modify_email',)
+    if email_form.validate_on_submit():
+        user.email = email_form.new_email.data
+        db.session.commit()
     return render_template("admin/change_email.html", form=email_form)

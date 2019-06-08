@@ -77,16 +77,9 @@
           </div>
 
             <div class="form-group col-md-6">
-                {{ form.submit(class="btn btn-primary btn-lg btn-block") }}
+                {{ form.modify(class="btn btn-primary btn-lg btn-block") }}
             </div>
         </form>
-        <div class="form-group col-md-6">
-                <button class="btn btn-secondary btn-lg btn-block">
-                    <a style='text-decoration:none; color:#FFFFFF'
-                           href="{{ url_for('admin.add_course')}}">
-                            重置</a></button>
-                </button>
-        </div>
     </div>
 </div>
 {% endblock %}
