@@ -16,71 +16,129 @@
                     {{ form.csrf_token }}
                       <div class="form-row">
                         <div class="form-group col-md-4">
-                          <label for="inputEmail4">学号</label>
-                            {{ form.student_id(class="form-control", placeholder="学号") }}
+                          <label for="inputEmail4">学号
+                          {% for error in form.student_id.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.student_id(class="form-control", disabled="disabled") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputPassword4">姓名</label>
-                            {{ form.name( class="form-control",placeholder="姓名") }}
+                          <label for="inputPassword4">姓名
+                          {% for error in form.name.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.name( class="form-control") }}
                         </div>
                           <div class="form-group col-md-4">
-                          <label for="inputPassword4">曾用名</label>
-                              {{ form.used_name(class="form-control",placeholder="曾用名") }}
+                          <label for="inputPassword4">曾用名
+                          {% for error in form.used_name.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                              {{ form.used_name(class="form-control") }}
                         </div>
                       </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                          <label for="inputEmail4">政治面貌</label>
-                            {{ form.p_status(class="form-control",placeholder="政治面貌") }}
+                          <label for="inputEmail4">政治面貌
+                          {% for error in form.p_status.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.p_status(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputState">性别</label>
+                          <label for="inputState">性别
+                          {% for error in form.sex.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
                             {{ form.sex(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputZip">民族</label>
-                            {{ form.nation(class="form-control", placeholder="民族") }}
+                          <label for="inputZip">民族
+                          {% for error in form.nation.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.nation(class="form-control") }}
                         </div>
                       </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                          <label for="inputEmail4">证件类型</label>
-                            {{ form.id_type(class="form-control",placeholder="证件类型") }}
+                          <label for="inputEmail4">证件类型
+                          {% for error in form.id_type.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.id_type(class="form-control") }}
                         </div>
                         <div class="form-group col-md-5">
-                          <label for="inputState">证件号吗</label>
-                            {{ form.id_number(class="form-control",placeholder="证件号码") }}
+                          <label for="inputState">证件号吗
+                          {% for error in form.id_number.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.id_number(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputZip">出生年月</label>
-                            {{ form.birth_time(class="form-control",placeholder="0000-00-00") }}
+                          <label for="inputZip">出生年月
+                          {% for error in form.birth_time.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.birth_time(class="form-control") }}
                         </div>
                       </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label for="inputEmail4">籍贯</label>
-                            {{ form.b_place(class="form-control", placeholder="籍贯") }}
+                          <label for="inputEmail4">籍贯
+                          {% for error in form.b_place.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.b_place(class="form-control") }}
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="inputState">户口所在地</label>
-                            {{ form.acc_location(class="form-control",placeholder="户口所在地") }}
+                          <label for="inputState">户口所在地
+                          {% for error in form.acc_location.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.acc_location(class="form-control") }}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                          <label for="inputEmail4">生源地</label>
-                            {{ form.stu_source(class="form-control",placeholder="生源地") }}
+                          <label for="inputEmail4">生源地
+                          {% for error in form.stu_source.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.stu_source(class="form-control") }}
                         </div>
                         <div class="form-group col-md-5">
-                          <label for="inputState">出生地</label>
-                            {{ form.bir_address(class="form-control",placeholder="出生的") }}
+                          <label for="inputState">出生地
+                          {% for error in form.bir_address.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.bir_address(class="form-control") }}
                         </div>
                         <div class="form-group col-md-4">
-                          <label for="inputZip">入学时间</label>
-                            {{ form.ad_time(class="form-control",placeholder="0000-00-00") }}
+                          <label for="inputZip">入学时间
+                          {% for error in form.ad_time.errors %}
+                                 <span style="color:red;">[{{ error }}]</span>
+                          {% endfor %}
+                          </label>
+                            {{ form.ad_time(class="form-control") }}
                         </div>
                       </div>
-                    {{ form.modify(class="btn btn-primary btn-lg btn-block") }}
+                    <div class="form-group col-md-6">
+                          {{ form.modify(class="btn btn-primary btn-lg btn-block") }}
+                        </div>
                 </form>
           </div>
     </div>
