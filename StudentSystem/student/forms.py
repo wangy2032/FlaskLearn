@@ -3,12 +3,18 @@ from flask_wtf import FlaskForm
 from wtforms import  StringField,PasswordField, BooleanField, SubmitField, ValidationError, RadioField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
+"""
+选课表单
+"""
+class CourseAddForm(FlaskForm):
+    course_submit = SubmitField('提交')
+
 
 '''
 密码修改
 '''
 class ChangePasswordForm(FlaskForm):
-    old_password = PasswordField('密码', validators=[DataRequired()])
+    old_password = PasswordField('原密码', validators=[DataRequired()])
     password = PasswordField('新密码', validators=[DataRequired(), EqualTo('password2', message='密码不一致')])
     password2 = PasswordField('确认密码', validators=[DataRequired()])
     submit = SubmitField('修改密码')
@@ -21,3 +27,10 @@ class ChangeEmailForm(FlaskForm):
     new_email = StringField('新邮箱', validators=[DataRequired(), Email()])
     verify_code = StringField('验证码')
     submit = SubmitField('修改邮箱')
+
+'''
+搜索表单
+'''
+class SearchForm(FlaskForm):
+    info_data = StringField()
+    search = SubmitField('搜索')

@@ -1,0 +1,96 @@
+{% extends "student/index.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% from 'bootstrap/pagination.html' import render_pagination %}
+
+{% block title %}System System - Change Password{% endblock %}
+
+
+{% block page_content %}
+<div class="col-md-8 col-md-push-1">
+    <div class="panel panel-default">
+          <div class="panel-heading">
+              选课
+          </div>
+          <div class="panel-body">
+              <form method="post">
+                  {{ form.csrf_token }}
+                  <div class="col-lg-10">
+                    <div class="input-group">
+                        {{ form.info_data( class="form-control") }}
+                      <span class="input-group-btn">
+                         {{ form.search(class="btn btn-default") }}
+                      </span>
+                    </div>
+                  </div>
+              </form>
+          </div>
+    </div>
+      <!-- Table -->
+      <table class="table">
+            <th>课程编号</th>
+            <th>课程名字</th>
+            <th>课程学分</th>
+            <th>老师工号</th>
+            <th>老师名字</th>
+            <th>上课教室</th>
+            <th>课程时长</th>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course.course_id }}</td>
+                    <td>{{ course.course_name }}</td>
+                    <td>{{ course.course_credit }}</td>
+                    <td>{{ course.teacher_id }}</td>
+                    <td>{{ course.teacher }}</td>
+                    <td>{{ course.class_room }}</td>
+                    <td>{{ course.course_time }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <a style='text-decoration:none; color:#FFFFFF'
+                               href="{{ url_for('student.course_add', course_id=course.course_id) }}">
+                                添加</a></button>
+                    </td>
+                </tr>
+            {% endfor %}
+      </table>
+    {% if pagination %}
+        <div style="float: right;margin-top: 20px"> {{ render_pagination(pagination) }}</div>
+    {% endif %}
+
+
+
+          <div class="panel-body">
+          <!-- Table -->
+                  <table class="table">
+                        <th>课程编号</th>
+                        <th>课程名字</th>
+                        <th>课程学分</th>
+                        <th>老师工号</th>
+                        <th>老师名字</th>
+                        <th>上课教室</th>
+                        <th>课程时长</th>
+                        {% for course in ge_ren_courses %}
+                            <tr>
+                                <td>{{ course.course_id }}</td>
+                                <td>{{ course.course_name }}</td>
+                                <td>{{ course.course_credit }}</td>
+                                <td>{{ course.teacher_id }}</td>
+                                <td>{{ course.teacher }}</td>
+                                <td>{{ course.class_room }}</td>
+                                <td>{{ course.course_time }}</td>
+                            </tr>
+                        {% endfor %}
+                  </table>
+          </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

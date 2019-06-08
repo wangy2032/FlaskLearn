@@ -5,118 +5,72 @@
 
 {% block page_content %}
 <div class="col-md-5 col-md-push-2">
-    <div class="panel-heading">
-      <h3>学籍信息添加</h3>
-  </div>
-    <form class="form-horizontal" role="form">
-                    <fieldset>
-                       <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_host">学年</label>
-                          <div class="col-sm-4">
-                             <input class="form-control" type="text" placeholder="192.168.1.161"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_name">学期</label>
-                          <div class="col-sm-4">
-                             <input class="form-control" type="text" placeholder="msh"/>
-                          </div>
-                       </div>
-                       <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_username">年级</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="text" placeholder="root"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_password">学院名称</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="password" placeholder="123456"/>
-                          </div>
-                       </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_username">系名称</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="text" placeholder="root"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_password">专业方向</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="password" placeholder="123456"/>
-                          </div>
-                       </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_username">班级名称</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="text" placeholder="root"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_password">学制</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="password" placeholder="123456"/>
-                          </div>
-                       </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_username">学籍状态</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="text" placeholder="root"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_password">是否在校</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="password" placeholder="123456"/>
-                          </div>
-                       </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_username">学历层次</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="text" placeholder="root"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_password">培养方式</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="password" placeholder="123456"/>
-                          </div>
-                       </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_username">培养层次</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="text" placeholder="root"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_password">学生类别</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="password" placeholder="123456"/>
-                          </div>
-                       </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="ds_username">招生学院</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="text" placeholder="root"/>
-                          </div>
-                          <label class="col-sm-2 control-label" for="ds_password">招生专业</label>
-                          <div class="col-sm-4">
-                             <input class="form-control"  type="password" placeholder="123456"/>
-                          </div>
-                       </div>
-                    </fieldset>
-                    <!--<fieldset>-->
-                         <!--<legend>选择相关表</legend>-->
-                        <!--<div class="form-group">-->
-                           <!--<label for="disabledSelect"  class="col-sm-2 control-label">表名</label>-->
-                           <!--<div class="col-sm-10">-->
-                              <!--<select id="disabledSelect" class="form-control">-->
-                                 <!--<option>禁止选择</option>-->
-                                 <!--<option>禁止选择</option>-->
-                              <!--</select>-->
-                           <!--</div>-->
-                        <!--</div>-->
-                    <!--</fieldset>-->
+  <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3>学籍信息</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row marketing">
+                    <div class="col-lg-4">
+                      <h4>学号:</h4>
+                      <p>{{ student_xue_ji.student_id }}</p>
+                        <br>
+                      <h4>学期:</h4>
+                      <p>{{ student_xue_ji.semester }}</p>
+                        <br>
+                      <h4>系名称:</h4>
+                      <p>{{ student_xue_ji.d_name }}</p>
+                        <br>
+                        <h4>学制:</h4>
+                      <p>{{ student_xue_ji.school_system }}</p>
+                        <br>
+                        <h4>招生专业:</h4>
+                      <p>{{ student_xue_ji.a_profession }}</p>
+                        <br>
+                        <h4>培养方式:</h4>
+                      <p>{{ student_xue_ji.t_method }}</p>
+                    </div>
 
-                       <!--<fieldset>-->
-                         <!--<legend>字段名</legend>-->
-                        <!--<div class="form-group">-->
-                           <!--<label for="disabledSelect"  class="col-sm-2 control-label">表名</label>-->
-                           <!--<div class="col-sm-10">-->
-                              <!--<select id="disabledSelect" class="form-control">-->
-                                 <!--<option>禁止选择</option>-->
-                                 <!--<option>禁止选择</option>-->
-                              <!--</select>-->
-                           <!--</div>-->
-                        <!--</div>-->
-                    <!--</fieldset>-->
-                </form>
+                    <div class="col-lg-4">
+                      <h4>姓名:</h4>
+                      <p>{{ student_xue_ji.name }}</p>
+                        <br>
+                      <h4>年级:</h4>
+                      <p>{{ student_xue_ji.grade }}</p>
+                        <br>
+                      <h4>专业名称:</h4>
+                      <p>{{ student_xue_ji.p_name }}</p>
+                        <br>
+                        <h4>学籍状态:</h4>
+                      <p>{{ student_xue_ji.xue_ji_zt }}</p>
+                        <br>
+                        <h4>是否在校:</h4>
+                      <p>{{ student_xue_ji.zai_xiao }}</p>
+                        <br>
+                        <h4>学生类型:</h4>
+                      <p>{{ student_xue_ji.student_type }}</p>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <h4>学年:</h4>
+                      <p>{{ student_xue_ji.school_year }}</p>
+                        <br>
+                      <h4>学院名称:</h4>
+                      <p>{{ student_xue_ji.college_name }}</p>
+                        <br>
+                      <h4>班级名字：</h4>
+                      <p>{{ student_xue_ji.class_name }}</p>
+                        <br>
+                        <h4>招生学院：</h4>
+                      <p>{{ student_xue_ji.a_college }}</p>
+                        <h4>学历层次：</h4>
+                      <p>{{ student_xue_ji.e_level }}</p>
+                        <br>
+                        <h4></h4>
+                      <p></p>
+                    </div>
+             </div>
+          </div>
 </div>
 {% endblock %}
 

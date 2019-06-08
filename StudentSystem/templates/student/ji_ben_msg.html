@@ -5,138 +5,84 @@
 
 {% block page_content %}
 <div class="col-lg-6 col-lg-push-2">
-    <div class="media">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">Media object</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </div>
-        <img class="ml-3" src="" alt="Generic placeholder image">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <div class="media">
+              <div class="media-left media-middle">
+                <a href="#">
+                  <img class="media-object" style="width:100px;height:100px;"
+                       src="{{ url_for('static', filename='images/wangyu.jpg') }}" alt="...">
+                </a>
+                  <button>上传照片</button>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">基本信息：</h4>
+
+              </div>
+            </div>
+      </div>
+      <div class="panel-body">
+        <div class="row marketing">
+            <div class="col-lg-4">
+              <h4>学号</h4>
+              <p>{{ student_ji_ben.student_id }}</p>
+                <br>
+              <h4>政治面貌</h4>
+              <p>{{ student_ji_ben.p_status }}</p>
+                <br>
+              <h4>证件类型</h4>
+              <p>{{ student_ji_ben.id_type }}</p>
+                <br>
+                <h4>籍贯</h4>
+              <p>{{ student_ji_ben.birthplace }}</p>
+                <br>
+                <h4>出生地</h4>
+              <p>{{ student_ji_ben.place_of_birth }}</p>
+            </div>
+
+            <div class="col-lg-4">
+              <h4>姓名</h4>
+              <p>{{ student_ji_ben.name }}</p>
+                <br>
+              <h4>性别</h4>
+              <p>{{ student_ji_ben.sex }}</p>
+                <br>
+              <h4>证件号码</h4>
+              <p>{{ student_ji_ben.id_number }}</p>
+                <br>
+                <h4>户口所在地</h4>
+              <p>{{ student_ji_ben.a_location }}</p>
+                <br>
+                <h4>入学时间</h4>
+              <p>{{ student_ji_ben.a_time }}</p>
+            </div>
+
+            <div class="col-lg-4">
+              <h4>曾用名</h4>
+              <p>
+                  {% if student_ji_ben.username %}
+                        {{ student_ji_ben.username }}
+                  {% else %}
+                        无
+                  {% endif %}
+
+              </p>
+                <br>
+              <h4>民族</h4>
+              <p>{{ student_ji_ben.min_zu }}</p>
+                <br>
+              <h4>出生年月</h4>
+              <p>{{ student_ji_ben.date_of_birth }}</p>
+                <br>
+                <h4>生源地</h4>
+              <p>{{ student_ji_ben.s_source }}</p>
+
+                <h4></h4>
+              <p></p>
+            </div>
+          </div>
+      </div>
     </div>
-    <!--<form class="form-inline">-->
-        <!--<table class="table" style="border:0;">-->
-              <!--<tbody>-->
-                    <!--<tr>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputName1", style="display: block">学号：</label>-->
-                                <!--<input type="text" class="form-control" id="exampleInputName1" placeholder=" ">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputName1" style="display: block">姓名：</label>-->
-                                <!--<input type="text" class="form-control" id="exampleInputName2" placeholder=" ">-->
-                            <!--</div>-->
-                        <!--</td>-->
 
-                        <!--<td rowspan="3", colspan="3" style="border: 0px">-->
-                            <!--&nbsp;-->
-                            <!--<img src="{{ url_for('static', filename='images/timg1.jpg') }}" height="150" width="139" alt="nihao" class="img-thumbnail">-->
-                        <!--</td>-->
-                    <!--</tr>-->
-
-                    <!--<tr>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">姓名拼音：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2" , style="display: block">性别：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-
-                    <!--</tr>-->
-                    <!--<tr>-->
-
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">曾用名：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">英文名字：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">证件类型：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                    <!--</tr>-->
-                    <!--<br/>-->
-                    <!--<tr>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">证件号码：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">出生年月：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">民族：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                    <!--</tr>-->
-
-                    <!--<tr>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">政治面貌：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">入学时间：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">籍贯：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">户口所在地：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">生源地：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                        <!--<td style="border: 0px">-->
-                            <!--<div class="form-group">-->
-                                <!--<label for="exampleInputEmail2", style="display: block">出生地：</label>-->
-                                <!--<input type="email" class="form-control" placeholder="">-->
-                            <!--</div>-->
-                        <!--</td>-->
-                    <!--</tr>-->
-              <!--</tbody>-->
-        <!--</table>-->
-    <!--</form>-->
 </div>
 {% endblock %}

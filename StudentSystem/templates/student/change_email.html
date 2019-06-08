@@ -9,10 +9,11 @@
 <div class="page-header">
   <h2>修改邮箱: </h2>
 </div>
-    <form action="" method="post" class="form" role="form">
+    <di class="col-lg-6">
+        <form action="" method="post" class="form" role="form">
         <div class="form-group  required">
             <label>{{ form.old_email.label }}</label>
-            {{ form.old_email(class="form-control") }}
+            {{ form.old_email(class="form-control", id="get_email") }}
         </div>
         <div class="form-group  required">
             <label>{{ form.new_email.label }}</label>
@@ -28,31 +29,47 @@
         <br>
         {{ form.submit(class="btn btn-default") }}
     </form>
+    </di>
 </div>
 <script>
         //短信验证码倒计时
     var countdownHandler = function(){
-        // alert("cdjfhsa")
         var btn = document.getElementById("sendVerifyCode");
-        // btn.innerHTML("fjasfaslfka")
-        // alert(btn)
-        // btn.innerHTML = 'helo'
-        var number = 60;
-        var countdown = function(){
-            if (number == 0) {
-                btn.setAttribute("disabled",false);
-                // btn.html("发送验证码");
-                btn.innerHTML = '发送验证码';
-                number = 60;
-                return;
-            } else {
-                btn.setAttribute("disabled",true);
-                btn.innerHTML = number + "秒 重新发送";
-                number--;
-            }
-            setTimeout(countdown,1000);
+        var number = 5;
+        var email = $("#get_email").val();
+        if (email == 0)
+        {
+            alert("邮箱为空!")
+            return;
         }
-        setTimeout(countdown,1000);
+        else
+        {
+            $.get("{{ url_for('student.send_code_email') }}",{'email':email}, function (data)
+            {
+                if(data['data'] == 0){
+                    alert("邮箱不存在")
+                    return;
+                }
+                else
+                {
+                    var countdown = function()
+                    {
+                        if (number == 0) {
+                            btn.innerHTML = '发送验证码';
+                            number = 5;
+                            $("#sendVerifyCode").attr("disabled",false);
+                            return;
+                        } else {
+                            btn.setAttribute("disabled",true);
+                            btn.innerHTML = number + "秒 重新发送";
+                            number--;
+                            }
+                        setTimeout(countdown,1000);
+                    }
+                    setTimeout(countdown,1000);
+                }
+            })
+        }
     }
 </script>
 {% endblock %}

@@ -56,7 +56,7 @@ class Course(db.Model):
     __tablename__='courses'
     course_id = db.Column(db.String(64), primary_key=True)#课程编号
     course_name = db.Column(db.String(64))#课程编号
-    course_credit = db.Column(db.String(64))#课程编号
+    course_credit = db.Column(db.String(64))#课程学分
     teacher_id = db.Column(db.String(64),db.ForeignKey('teachers.teacher_id'))    #老师工号
     teacher = db.Column(db.String(64))    #老师名字
     class_room = db.Column(db.String(64))    #上课教室
@@ -138,7 +138,18 @@ class Xueji(db.Model):
 '''
 成绩信息表
 '''
-
+class Score(db.Model):
+    __tablename__ = 'student_score'
+    id = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.String(64))
+    student_id = db.Column(db.String(64)) #学号
+    course_name = db.Column(db.String(64))  # 课程编号
+    course_credit = db.Column(db.String(64))  # 课程学分
+    teacher_id = db.Column(db.String(64), db.ForeignKey('teachers.teacher_id'))  # 老师工号
+    teacher = db.Column(db.String(64))  # 老师名字
+    class_room = db.Column(db.String(64))  # 上课教室
+    course_time = db.Column(db.String(64))  # 课时
+    fraction = db.Column(db.Integer)
 
 
 
