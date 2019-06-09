@@ -4,9 +4,10 @@
 from flask import Flask
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
-from config import config
+from config import config, Config
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
+from flask_uploads import UploadSet, configure_uploads, patch_request_class, IMAGES
 
 
 
@@ -20,10 +21,16 @@ login_manager.login_view = 'auth.login'
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+    app.config['MAX_CONTENT_LENGTH'] = Config.IMAGE_SIZE
+    app.config['UPLOADED_PHOTOS_DEST'] = Config.IMAGE_PATH
+    global file
+    file = UploadSet('photos', IMAGES)
+    configure_uploads(app, file)
     bootstrap.init_app(app)
     db.init_app(app)
     mail.init_app(app)
     login_manager.init_app(app)
+
 
     #注册登陆蓝本
     from .auth import auth as auth_blueprint

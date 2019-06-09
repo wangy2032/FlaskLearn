@@ -3,21 +3,35 @@ from . import student
 from flask import render_template, flash, request, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from StudentSystem.models import db, Geren, Xueji, Course, Score, User
-from StudentSystem.student.forms import ChangeEmailForm, ChangePasswordForm, SearchForm
+from StudentSystem.student.forms import ChangeEmailForm, ChangePasswordForm, \
+    SearchForm, ImageUploadForm
 from sqlalchemy import or_
 from StudentSystem.sendEmail import send_email, MyRedis
-import string, random
+import string, random, os
+from StudentSystem import file
+from StudentSystem.image_upload import check_image_type, image_thumbnail
+from config import Config
 
 '''
 基本信息
 '''
-@student.route('/ji-ben-msg')
+@student.route('/ji-ben-msg', methods=['GET','POST'])
 @login_required
 def index():
-    print(current_user.student_id)
     student_ji_ben = Geren.query.filter_by(student_id=current_user.student_id).first()
-    print(student)
-    return render_template('student/ji_ben_msg.html', student_ji_ben=student_ji_ben)
+    form = ImageUploadForm()
+    image_url = os.path.join(Config.IMAGE_PATH, 'favicon.ico')
+    if form.validate_on_submit():
+        image = form.images.data
+        suffix = image.filename[image.filename.rfind('.'):].lower()
+        image_name = current_user.student_id + suffix
+        path = os.path.join(Config.IMAGE_PATH, image_name)
+        file.save(image, name=image_name)
+        image_thumbnail(path, 's_')
+        image_url = file.url('s_' + image_name)
+    print(image_url)
+    return render_template('student/ji_ben_msg.html',
+                           student_ji_ben=student_ji_ben, image_url=image_url, form=form)
 
 '''
 学籍信息
@@ -128,6 +142,21 @@ def change_email():
     return render_template("student/change_email.html", form=email_form)
 
 '''
-我的课程
+头像上传
 '''
+@student.route('/image/upload', methods=['GET', 'POST'])
+@login_required
+def image_uploads():
+    form = ImageUploadForm()
+    image_url = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], 'favicon.ico')
+    if form.validate_on_submit():
+        image = form.images.data
+        suffix = image.filename[image.filename.rfind('.'), :]
+        image_name = current_user.stuednt_id
+        path = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], image_name+suffix)
+        file.save(image, name=image_name)
+        image_thumbnail(path, 's_')
+        img_url = file.url('s_'+image_name)
+    return render_template('student/ji_ben_msg.html', image_form=form, img_url=img_url)
+
 

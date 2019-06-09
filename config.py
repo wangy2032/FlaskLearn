@@ -23,6 +23,13 @@ class Config:
     # qq授权码
     MAIL_PASSWORD = 'vmwfbyoitaflbehd'
 
+    #设置上传图片的类型
+    IMAGE_TYPE=['jpg', 'png', 'ico', 'jpeg']
+    #设置上传文件大小
+    IMAGE_SIZE = 1024*1024*64
+    #设置上传路径
+    IMAGE_PATH = os.path.join(basedir, 'static\\images')
+
 
 class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:123456@localhost/studentsystem?auth_plugin=mysql_native_password'

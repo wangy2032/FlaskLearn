@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from flask_wtf import FlaskForm
-from wtforms import  StringField,PasswordField, BooleanField, SubmitField, ValidationError, RadioField
+from flask_wtf.file import FileRequired, FileField, FileAllowed
+from wtforms import  StringField,PasswordField, BooleanField, \
+    SubmitField, ValidationError, RadioField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
+from StudentSystem import file
 
 """
 选课表单
@@ -34,3 +37,10 @@ class ChangeEmailForm(FlaskForm):
 class SearchForm(FlaskForm):
     info_data = StringField()
     search = SubmitField('搜索')
+
+"""
+图片上传表单
+"""
+class ImageUploadForm(FlaskForm):
+    images = FileField('照片选择', validators=[FileRequired('请选择文件'), FileAllowed(file)])
+    submit = SubmitField('上传')

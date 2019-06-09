@@ -1,5 +1,5 @@
 {% extends "student/index.html" %}
-
+{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}System System - Change Password{% endblock %}
 
 
@@ -11,9 +11,9 @@
               <div class="media-left media-middle">
                 <a href="#">
                   <img class="media-object" style="width:100px;height:100px;"
-                       src="{{ url_for('static', filename='images/wangyu.jpg') }}" alt="...">
+                       src="{{ image_url }}" alt="...">
                 </a>
-                  <button>上传照片</button>
+                  {{ wtf.quick_form(form) }}
               </div>
               <div class="media-body">
                 <h4 class="media-heading">基本信息：</h4>
