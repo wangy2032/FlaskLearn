@@ -21,8 +21,10 @@ import uuid
 @login_required
 def index():
     student_ji_ben = Geren.query.filter_by(student_id=current_user.student_id).first()
+    image_url=None
     form = ImageUploadForm()
-    image_url = student_ji_ben.user_image
+    if student_ji_ben:
+        image_url = student_ji_ben.user_image
     if form.validate_on_submit():
         image = form.images.data
         suffix = image.filename[image.filename.rfind('.'):].lower()
@@ -78,7 +80,7 @@ def course_show():
 @login_required
 def course_add(course_id):
     course = Course.query.filter_by(course_id=course_id).first()
-    couse_check = Score.query.filter_by(course_id=course_id).first()
+    couse_check = Score.query.filter_by(course_id=course_id, student_id=current_user.student_id).first()
     if not couse_check:
         add_score = Score(
             student_id=current_user.student_id,
