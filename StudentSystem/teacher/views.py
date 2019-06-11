@@ -242,7 +242,8 @@ def send_code_email():
 def change_email():
     email_form = ChangeEmailForm()
     user = User.query.filter_by(email=email_form.old_email.data).first()
-    if email_form.validate_on_submit():
+    if email_form.validate_on_submit() and \
+            MyRedis.get_cache_data(my_redis, email_form.old_email.data) == email_form.verify_code.data.strip():
         user.email = email_form.new_email.data
         db.session.commit()
         flash('更新成功！')

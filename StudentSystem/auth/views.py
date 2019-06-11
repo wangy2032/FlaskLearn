@@ -141,7 +141,7 @@ def retrieve_password():
         user = User.query.filter_by(student_id=form.id.data).first()
         email = form.email.data
         if user and user.email == email:
-            if form.yan_zheng_ma.data == MyRedis.get_cache_data(my_redis, email):
+            if form.yan_zheng_ma.data.strip() == MyRedis.get_cache_data(my_redis, email):
                 user.password = form.password.data
                 db.session.add(user)
                 db.session.commit()
