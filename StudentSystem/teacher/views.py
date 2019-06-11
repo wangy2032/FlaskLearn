@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from . import teacher
-from flask import render_template, flash, request, redirect, url_for
+from flask import render_template, flash, request, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 from StudentSystem import db
-from StudentSystem.models import Geren, Xueji, Student
+from StudentSystem.models import Geren, Xueji, Student, Teacher, Score, User
 from StudentSystem.teacher.forms import StudentJiBenMsg, StudentXueJi, \
-    SearchForm, StudentJiBenMdifyMsg, StudentXueJiModify
+    SearchForm, StudentJiBenMdifyMsg, StudentXueJiModify, ChangePasswordForm, ChangeEmailForm
+from StudentSystem.sendEmail import send_email,MyRedis
+import string, redis, random
 
 
 """
@@ -186,7 +188,81 @@ def show_xueji(student_id):
 '''
 录入学生成绩
 '''
-@teacher.route('/score/add')
+@teacher.route('/score/show', methods=['GET', 'POST'])
 @login_required
-def add_score():
-    return  render_template('teacher/add_student_score.html')
+def show_score():
+    search_form = SearchForm()
+    tea = Teacher.query.filter_by(teacher_id=current_user.student_id).first()
+    scores = []
+    print(tea.students)
+    for stu in tea.students:
+        print(stu.student_id)
+        student = Score.query.filter_by(student_id=stu.student_id, teacher_id=current_user.student_id).all()
+        scores.append(student)
+    if search_form.validate_on_submit() and search_form.search.data:
+        scores = []
+        tmp = Score.query.filter_by(student_id=search_form.search.data).all()
+        if tmp:
+            scores.append(tmp)
+            return render_template('teacher/add_student_score.html', search_form=search_form, scores=scores)
+    return  render_template('teacher/add_student_score.html', search_form=search_form, scores=scores)
+
+@teacher.route('/score/push', methods=['GET','POST'])
+@login_required
+def push_score():
+    student_id = request.args.get('student_id')
+    course_id = request.args.get('course_id')
+    fraction = request.form.get('student_score')
+    if fraction:
+        sco = Score.query.filter_by(course_id=course_id, student_id=student_id).first()
+        sco.fraction = fraction
+        db.session.commit()
+        flash('更新成功')
+    return redirect(url_for('teacher.show_score'))
+
+"""
+修改邮箱(公共部分)
+"""
+my_redis = MyRedis.connect()
+@teacher.route('/retrieve-password/send-code')
+def send_code_email():
+    email = request.args.get('email')
+    user = User.query.filter_by(email=email).first()
+    if user:
+        zi_mu_list = list(string.ascii_letters)
+        zi_mu_list.extend(map(lambda x: str(x), range(0, 10)))
+        code = "".join(random.sample(zi_mu_list, 6))
+        MyRedis.set_cache_data(my_redis, email, code)
+        send_email(email, '邮箱验证码', 'auth/email/modify_email', user=user, code=code)
+        return jsonify({'data':1})
+    return jsonify({'data': 0})
+
+@teacher.route('/change/email', methods=['GET', 'POST'])
+@login_required
+def change_email():
+    email_form = ChangeEmailForm()
+    user = User.query.filter_by(email=email_form.old_email.data).first()
+    if user:
+        send_email(user.email, '修改邮箱验证码', 'auth/email/modify_email',)
+    if email_form.validate_on_submit():
+        user.email = email_form.new_email.data
+        db.session.commit()
+    return render_template("teacher/change_email.html", form=email_form)
+
+"""
+修改密码(公共本分)
+"""
+@teacher.route('/change/password', methods=['GET', 'POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if current_user.verify_password(form.old_password.data):
+            current_user.password = form.password.data
+            db.session.add(current_user)
+            db.session.commit()
+            flash('密码重设成功')
+            return redirect(url_for('teacher.change_password'))
+        else:
+            flash('原密码不正确')
+    return render_template("teacher/change_password.html", form=form)

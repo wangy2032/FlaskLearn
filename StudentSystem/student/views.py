@@ -2,7 +2,8 @@
 from . import student
 from flask import render_template, flash, request, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from StudentSystem.models import db, Geren, Xueji, Course, Score, User
+from StudentSystem.models import db, Geren, Xueji, Course, Score, User, \
+    Student,Teacher
 from StudentSystem.student.forms import ChangeEmailForm, ChangePasswordForm, \
     SearchForm, ImageUploadForm
 from sqlalchemy import or_
@@ -11,6 +12,7 @@ import string, random, os
 from StudentSystem import file
 from StudentSystem.image_upload import check_image_type, image_thumbnail
 from config import Config
+import uuid
 
 '''
 基本信息
@@ -20,15 +22,17 @@ from config import Config
 def index():
     student_ji_ben = Geren.query.filter_by(student_id=current_user.student_id).first()
     form = ImageUploadForm()
-    image_url = os.path.join(Config.IMAGE_PATH, 'favicon.ico')
+    image_url = student_ji_ben.user_image
     if form.validate_on_submit():
         image = form.images.data
         suffix = image.filename[image.filename.rfind('.'):].lower()
-        image_name = current_user.student_id + suffix
+        image_name = str(uuid.uuid4()).replace('-','')+ suffix
         path = os.path.join(Config.IMAGE_PATH, image_name)
         file.save(image, name=image_name)
         image_thumbnail(path, 's_')
         image_url = file.url('s_' + image_name)
+        student_ji_ben.user_image = image_url
+        db.session.commit()
     print(image_url)
     return render_template('student/ji_ben_msg.html',
                            student_ji_ben=student_ji_ben, image_url=image_url, form=form)
@@ -86,11 +90,26 @@ def course_add(course_id):
             class_room=course.class_room,
             course_time=course.course_time
         )
+
+        stu = Student.query.get(current_user.student_id)
+        tea = Teacher.query.get(course.teacher_id)
+        stu.teachers.append(tea)
         db.session.add(add_score)
         db.session.commit()
         flash('{}课程添加成功'.format(course.course_name))
-    flash('此课程以添加！')
+    else:
+        flash('此课程以添加！')
     return redirect(url_for('student.course_show'))
+
+"""
+成绩显示
+"""
+@student.route('/score/show')
+@login_required
+def score_show():
+    scores = Score.query.filter_by(student_id=current_user.student_id).all()
+    return render_template('student/score_show.html', scores=scores)
+
 
 
 
@@ -141,22 +160,6 @@ def change_email():
         db.session.commit()
     return render_template("student/change_email.html", form=email_form)
 
-'''
-头像上传
-'''
-@student.route('/image/upload', methods=['GET', 'POST'])
-@login_required
-def image_uploads():
-    form = ImageUploadForm()
-    image_url = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], 'favicon.ico')
-    if form.validate_on_submit():
-        image = form.images.data
-        suffix = image.filename[image.filename.rfind('.'), :]
-        image_name = current_user.stuednt_id
-        path = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], image_name+suffix)
-        file.save(image, name=image_name)
-        image_thumbnail(path, 's_')
-        img_url = file.url('s_'+image_name)
-    return render_template('student/ji_ben_msg.html', image_form=form, img_url=img_url)
+
 
 

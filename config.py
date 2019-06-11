@@ -28,7 +28,7 @@ class Config:
     #设置上传文件大小
     IMAGE_SIZE = 1024*1024*64
     #设置上传路径
-    IMAGE_PATH = os.path.join(basedir, 'static\\images')
+    IMAGE_PATH = os.path.join(basedir, 'upload\\images')
 
 
 class DevelopmentConfig(Config):

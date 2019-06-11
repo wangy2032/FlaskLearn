@@ -24,5 +24,6 @@ def image_thumbnail(path, prefix, width=100, height=100):
     img = Image.open(path)
     img.thumbnail((width, height))
     path_tmp = os.path.split(path)
+    print("路径：",path)
     path = os.path.join(path_tmp[0], prefix+path_tmp[1])
     img.save(path)

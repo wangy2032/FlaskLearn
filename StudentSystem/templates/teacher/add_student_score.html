@@ -12,108 +12,52 @@
               录入成绩信息
           </div>
           <div class="panel-body">
-                <!--<form method="POST">-->
-                    <!--{{ form.csrf_token }}-->
-                      <!--<div class="form-row">-->
-                        <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputEmail4">学号</label>-->
-                            <!--{{ form.student_id(class="form-control", placeholder="学号") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputPassword4">姓名</label>-->
-                            <!--{{ form.name( class="form-control",placeholder="姓名") }}-->
-                        <!--</div>-->
-                          <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputPassword4">曾用名</label>-->
-                              <!--{{ form.used_name(class="form-control",placeholder="曾用名") }}-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--<div class="form-row">-->
-                        <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputEmail4">政治面貌</label>-->
-                            <!--{{ form.p_status(class="form-control",placeholder="政治面貌") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputState">性别</label>-->
-                            <!--{{ form.sex(class="form-control") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputZip">民族</label>-->
-                            <!--{{ form.nation(class="form-control", placeholder="民族") }}-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--<div class="form-row">-->
-                        <!--<div class="form-group col-md-3">-->
-                          <!--<label for="inputEmail4">证件类型</label>-->
-                            <!--{{ form.id_type(class="form-control",placeholder="证件类型") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-5">-->
-                          <!--<label for="inputState">证件号吗</label>-->
-                            <!--{{ form.id_number(class="form-control",placeholder="证件号码") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputZip">出生年月</label>-->
-                            <!--{{ form.birth_time(class="form-control",placeholder="0000-00-00") }}-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--<div class="form-row">-->
-                        <!--<div class="form-group col-md-6">-->
-                          <!--<label for="inputEmail4">籍贯</label>-->
-                            <!--{{ form.b_place(class="form-control", placeholder="籍贯") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-6">-->
-                          <!--<label for="inputState">户口所在地</label>-->
-                            <!--{{ form.acc_location(class="form-control",placeholder="户口所在地") }}-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="form-row">-->
-                        <!--<div class="form-group col-md-3">-->
-                          <!--<label for="inputEmail4">生源地</label>-->
-                            <!--{{ form.stu_source(class="form-control",placeholder="生源地") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-5">-->
-                          <!--<label for="inputState">出生地</label>-->
-                            <!--{{ form.bir_address(class="form-control",placeholder="出生的") }}-->
-                        <!--</div>-->
-                        <!--<div class="form-group col-md-4">-->
-                          <!--<label for="inputZip">入学时间</label>-->
-                            <!--{{ form.ad_time(class="form-control",placeholder="0000-00-00") }}-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--{{ form.ti_jiao(class="btn btn-primary btn-lg btn-block") }}-->
-                    <!--{{ form.chong_zhi(class="btn btn-secondary btn-lg btn-block") }}-->
-                <!--</form>-->
+              <form method="post">
+          {{ search_form.csrf_token }}
+          <div class="col-lg-10">
+            <div class="input-group">
+                {{ search_form.search( class="form-control") }}
+              <span class="input-group-btn">
+                 {{ search_form.submit(class="btn btn-default") }}
+              </span>
+            </div>
+          </div>
+      </form>
+              <br>
+              <br>
+                <table class="table">
+                    <th>课程编号</th>
+            <th>学生学号</th>
+            <th>课程名称</th>
+            <th>课程学分</th>
+            <th>授课老师</th>
+            <th>考试成绩</th>
+            <th>修改成绩</th>
+            <th>操   作</th>
+            {% for i in scores %}
+                    {% for score in i %}
+            <tr>
+                <td>{{ score.course_id }}</td>
+                <td>{{ score.student_id }}</td>
+                <td>{{ score.course_name }}</td>
+                <td>{{ score.course_credit }}</td>
+                <td>{{ score.teacher }}</td>
+                <td>{{ score.fraction }}</td>
+                <form action="{{ url_for('teacher.push_score',course_id=score.course_id, student_id=score.student_id) }}"
+                      method="post">
+                    <td><input type="text" name="student_score" style="height:23px;width:60px"></td>
+                    <td>
+                        <input type="submit" value="录入成绩" class="btn btn-primary btn-sm">
+                    </td>
+                </form>
+            </tr>
+                    {% endfor %}
+            {% endfor %}
+                </table>
           </div>
     </div>
-          <!-- Table -->
-          <table class="table">
-                <th>学号</th>
-                <th>姓名</th>
-                <th>民族</th>
-                <th>性别</th>
-                <th>身份证</th>
-              <th>操作</th>
-                {% for geren in gerens %}
-                    <tr>
-                        <td>{{ geren.student_id }}</td>
-                        <td>{{ geren.name }}</td>
-                        <td>{{ geren.min_zu }}</td>
-                        <td>{{ geren.sex }}</td>
-                        <td>{{ geren.id_number }}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm">
-                                <a style='text-decoration:none; color:#FFFFFF'
-                                   href="">
-                                    查看详细信息或者修改信息</a></button>
-                        </td>
-                    </tr>
-                {% endfor %}
-          </table>
-            {% if pagination %}
-                <div style="float: right;margin-top: 20px"> {{ render_pagination(pagination) }}</div>
-            {% endif %}
-        </div>
 </div>
+
 {% endblock %}
 
 

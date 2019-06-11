@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from . import admin
 from flask import render_template, flash, request, redirect, url_for, jsonify
-from StudentSystem.models import User, Course, Geren, Student, Teacher, Xueji, db
+from StudentSystem.models import User, Course, Geren, Student, Teacher, Xueji, db, Score
 from flask_login import login_required, current_user
 from .forms import SearchForm, ModifyUserForm, AddTeacherForm, \
-    ChangePasswordForm, ChangeEmailForm, AddCourses, StudentJiBenMsg, StudentXueJi, ModifyCourses
+    ChangePasswordForm, ChangeEmailForm, AddCourses, StudentJiBenMsg, \
+    StudentXueJi, ModifyCourses, ScoreForm
 from sqlalchemy import or_, and_
 import psutil, json, string, redis, random
 from StudentSystem.sendEmail import send_email,MyRedis
@@ -140,7 +141,10 @@ def teacher_modify(id):
             if not student_tmp:
                 student = Student(student_id=form.id.data, name=form.username.data)
                 tmp = Teacher.query.filter_by(teacher_id=form.id.data).first()
+                course_tmp = Course.query.filter_by(teacher_id=form.id.data).all()
                 if tmp:
+                    for i in course_tmp:
+                        db.session.delete(i)
                     db.session.delete(tmp)
                 db.session.add(student)
         db.session.commit()
@@ -308,7 +312,7 @@ def show_or_modify(student_id):
 """
 学籍信息
 """
-@admin.route('/xueji')
+@admin.route('/xueji', methods=['GET','POST'])
 @login_required
 def xue_ji_show():
     page = request.args.get('page', 1, type=int)
@@ -433,17 +437,53 @@ def student_xue_ji_delete(student_id):
 """
 成绩信息
 """
-@admin.route('/student/score')
+@admin.route('/student/score', methods=['GET','POST'])
 @login_required
 def student_score_show():
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+    pagination = Student.query.paginate(page=page, per_page=per_page)
+    students = pagination.items
+    contxt = {
+        'pagination': pagination,
+        'students': students
+    }
     form = SearchForm()
-    return  render_template('admin/student_score_show.html', form=form)
+    if form.validate_on_submit() and form.info_data.data:
+        filters = {or_(Student.student_id == form.info_data.data.strip(),
+                       Student.name == form.info_data.data.strip())}
+        pagination = Student.query.filter(*filters).paginate(page=page, per_page=per_page)
+        students = pagination.items
+        contxt = {
+            'pagination': pagination,
+            'students': students,
+        }
+        return render_template('admin/student_score_show.html', form=form, **contxt)
+    return render_template('admin/student_score_show.html', form=form, **contxt)
 
+@admin.route('/student/<student_id>/score/show', methods=['GET','POST'])
+@login_required
+def student_score_msg(student_id):
+    scores = Score.query.filter_by(student_id=student_id).all()
+    return render_template('admin/student_score_modify.html', scores=scores)
+
+@admin.route('/student/score/modify', methods=['GET','POST'])
+@login_required
+def student_modify():
+    student_id = request.args.get('student_id')
+    course_id = request.args.get('course_id')
+    fraction = request.form.get('student_score')
+    if fraction:
+        sco = Score.query.filter_by(course_id=course_id, student_id=student_id).first()
+        sco.fraction = fraction
+        db.session.commit()
+        flash('更新成功')
+    return redirect(url_for('admin.student_score_msg', student_id=student_id))
 
 '''
 课程管理
 '''
-@admin.route('/course/show')
+@admin.route('/course/show', methods=['GET','POST'])
 @login_required
 def course_show():
     page = request.args.get('page', 1, type=int)
@@ -455,6 +495,19 @@ def course_show():
         'courses': courses
     }
     form = SearchForm()
+    if form.validate_on_submit() and form.info_data.data:
+        filters = {or_(Course.course_id == form.info_data.data.strip(),
+                       Course.course_name == form.info_data.data.strip(),
+                       Course.teacher == form.info_data.data.strip(),
+                       Course.teacher_id == form.info_data.data.strip()
+                       )}
+        pagination = Course.query.filter(*filters).paginate(page=page, per_page=per_page)
+        courses = pagination.items
+        contxt = {
+            'pagination': pagination,
+            'courses': courses,
+        }
+        return render_template('admin/course_show.html', form=form, **contxt)
     return render_template("admin/course_show.html", form=form, **contxt)
 
 @admin.route('/course/add', methods=['GET', 'POST'])

@@ -31,34 +31,22 @@
   </div>
   <!-- Table -->
   <table class="table">
-        <th>课程编号</th>
         <th>学号</th>
         <th>姓名</th>
-        <th>性别</th>
-        <th>身份证</th>
-        <th>操作</th>
-        {% for teacher in teachers %}
+        <th>专业</th>
+        <th>班级</th>
+        <th>查看成绩</th>
+        {% for student in students %}
             <tr>
-                <td>{{ teacher.id }}</td>
-                <td>{{ teacher.student_id }}</td>
-                <td>{{ teacher.username }}</td>
-                <td>{{ teacher.email }}</td>
-                <td>{{ teacher.confirmed }}</td>
-                    <td>{{ teacher.role }}</td>
+                <td>{{ student.student_id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.xue_ji_msg.p_name }}</td>
+                <td>{{ student.xue_ji_msg.class_name }}</td>
                 <td>
                     <button type="button" class="btn btn-primary btn-sm">
                         <a style='text-decoration:none; color:#FFFFFF'
-                           href="">
+                           href="{{ url_for('admin.student_score_msg', student_id=student.student_id) }}">
                             查看</a></button>
-                    <button onclick="return confirm('你确定')"
-                            type="button" class="btn btn-danger btn-sm">
-                        <a style='text-decoration:none; color:#FFFFFF'
-                           href="">
-                            删除</a></button>
-                    <button type="button" class="btn btn-primary btn-sm">
-                        <a style='text-decoration:none; color:#FFFFFF'
-                           href="">
-                            修改</a></button>
                 </td>
             </tr>
         {% endfor %}

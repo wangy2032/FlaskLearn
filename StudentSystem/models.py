@@ -43,19 +43,20 @@ def load_user(user_id):
 '''
 学生老师中间表
 '''
-
 student_teacher_table = db.Table(
     'student_teach',
     db.Column('student_id', db.String(64), db.ForeignKey('students.student_id')),
     db.Column('teacher_id', db.String(64), db.ForeignKey('teachers.teacher_id'))
 )
+
+
 '''
 课程
 '''
 class Course(db.Model):
     __tablename__='courses'
     course_id = db.Column(db.String(64), primary_key=True)#课程编号
-    course_name = db.Column(db.String(64))#课程编号
+    course_name = db.Column(db.String(64))#课程名字
     course_credit = db.Column(db.String(64))#课程学分
     teacher_id = db.Column(db.String(64),db.ForeignKey('teachers.teacher_id'))    #老师工号
     teacher = db.Column(db.String(64))    #老师名字
@@ -73,7 +74,8 @@ class Student(db.Model):
     xue_ji_msg = db.relationship('Xueji', uselist=False)
     teachers = db.relationship('Teacher',
                                secondary=student_teacher_table,
-                               back_populates='students')
+                               back_populates='students'
+                               )
 
 '''
 老师表
@@ -82,10 +84,12 @@ class Teacher(db.Model):
     __tablename__='teachers'
     teacher_id = db.Column(db.String(64), primary_key=True)
     name = db.Column(db.String(64))
-    course_msg = db.relationship('Course', uselist=False)
+    course_msg = db.relationship('Course', uselist=False, cascade='all, delete-orphan',
+                               passive_deletes=True)
     students = db.relationship('Student',
                                secondary=student_teacher_table,
-                               back_populates='teachers')
+                               back_populates='teachers',
+                               )
 
 
 '''
@@ -95,7 +99,7 @@ class Geren(db.Model):
     __tablename__ = 'gerens'
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.String(64),  #学号
-                           db.ForeignKey('students.student_id'))
+                           db.ForeignKey('students.student_id', ondelete = 'CASCADE'))
     name = db.Column(db.String(64))#姓名
     user_name = db.Column(db.String(64))#曾用名
     sex = db.Column(db.String(64))    #性别
@@ -118,7 +122,7 @@ class Xueji(db.Model):
     __tablename__ = 'xuejis'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64)) #姓名
-    student_id = db.Column(db.String(64) ,db.ForeignKey('students.student_id'))
+    student_id = db.Column(db.String(64) ,db.ForeignKey('students.student_id', ondelete = 'CASCADE'))
     school_year= db.Column(db.String(64))    #学年
     semester = db.Column(db.String(64))    #学期
     grade = db.Column(db.String(64))    #年级
@@ -145,7 +149,7 @@ class Score(db.Model):
     student_id = db.Column(db.String(64)) #学号
     course_name = db.Column(db.String(64))  # 课程编号
     course_credit = db.Column(db.String(64))  # 课程学分
-    teacher_id = db.Column(db.String(64), db.ForeignKey('teachers.teacher_id'))  # 老师工号
+    teacher_id = db.Column(db.String(64), db.ForeignKey('teachers.teacher_id', ondelete = 'CASCADE'))  # 老师工号
     teacher = db.Column(db.String(64))  # 老师名字
     class_room = db.Column(db.String(64))  # 上课教室
     course_time = db.Column(db.String(64))  # 课时

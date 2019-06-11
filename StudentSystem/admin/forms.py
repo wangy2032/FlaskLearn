@@ -13,6 +13,10 @@ class StudentJiBenMsg(FlaskForm):
         super().__init__()
         self.student_id.choices = [(student.student_id, student.student_id) for student in db.session.query(Student).all()]
 
+    def check_id(self, field):
+        tmp = Geren.query.filter_by(id_number=field.data).first()
+        if tmp:
+            raise ValidationError('身份证存在')
 
     student_id = SelectField('学号')
     name = StringField('姓名', validators=[DataRequired()])
@@ -24,7 +28,9 @@ class StudentJiBenMsg(FlaskForm):
                       validators=[DataRequired()])
     nation = StringField('民族', validators=[DataRequired()])
     id_type = SelectField('证件类型', choices=[('二代身份证', '二代身份证')], validators=[DataRequired()])
-    id_number = StringField('证件号码', validators=[DataRequired(), Length(18, message='长度18')])
+    id_number = StringField('证件号码', validators=[DataRequired(),
+                                                Length(18, message='长度18'),
+                                                check_id])
     birth_time = StringField('出生时间', validators=[DataRequired()])
     b_place = StringField('籍贯', validators=[DataRequired()])
     acc_location = StringField('户口所在地', validators=[DataRequired()])
@@ -87,6 +93,13 @@ class StudentXueJi(FlaskForm):
 class SearchForm(FlaskForm):
     info_data = StringField()
     search = SubmitField('搜索')
+
+'''
+成绩表单
+'''
+class ScoreForm(FlaskForm):
+    score = StringField()
+    submit = SubmitField()
 
 '''
 账户修改表单
