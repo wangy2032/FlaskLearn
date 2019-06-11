@@ -10,6 +10,7 @@
 </div>
 <div class="col-md-9">
     <form action="" method="post" class="form" role="form">
+        {{ form.csrf_token }}
         <div class="form-group  required">
             <label>{{ form.old_email.label }}</label>
             {{ form.old_email(class="form-control") }}
@@ -33,21 +34,41 @@
         //短信验证码倒计时
     var countdownHandler = function(){
         var btn = document.getElementById("sendVerifyCode");
-        var number = 60;
-        var countdown = function(){
-            if (number == 0) {
-                btn.setAttribute("disabled",false);
-                btn.innerHTML = '发送验证码';
-                number = 60;
-                return;
-            } else {
-                btn.setAttribute("disabled",true);
-                btn.innerHTML = number + "秒 重新发送";
-                number--;
-            }
-            setTimeout(countdown,1000);
+        var number = 5;
+        var email = $("#get_email").val();
+        if (email == 0)
+        {
+            alert("邮箱为空!")
+            return;
         }
-        setTimeout(countdown,1000);
+        else
+        {
+            $.get("{{ url_for('auth.send_code_email') }}",{'email':email}, function (data)
+            {
+                if(data['data'] == 0){
+                    alert("邮箱不存在")
+                    return;
+                }
+                else
+                {
+                    var countdown = function()
+                    {
+                        if (number == 0) {
+                            btn.innerHTML = '发送验证码';
+                            number = 5;
+                            $("#sendVerifyCode").attr("disabled",false);
+                            return;
+                        } else {
+                            btn.setAttribute("disabled",true);
+                            btn.innerHTML = number + "秒 重新发送";
+                            number--;
+                            }
+                        setTimeout(countdown,1000);
+                    }
+                    setTimeout(countdown,1000);
+                }
+            })
+        }
     }
 </script>
 {% endblock %}

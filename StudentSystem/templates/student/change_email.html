@@ -11,6 +11,7 @@
 </div>
     <di class="col-lg-6">
         <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token }}
         <div class="form-group  required">
             <label>{{ form.old_email.label }}</label>
             {{ form.old_email(class="form-control", id="get_email") }}

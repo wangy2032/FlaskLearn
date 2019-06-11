@@ -66,50 +66,53 @@ def logout():
     return redirect(url_for('auth.index'))
 
 
+#
+# '''
+# 邮件确认
+# '''
+# @auth.route('/confirm/<token>')
+# @login_required
+# def confirm(token):
+#     if current_user.confirmed:
+#         return redirect(url_for('main.base'))
+#     if current_user.confirm(token):
+#         db.session.commit()
+#         flash('账户确认成功')
+#     else:
+#         flash('确认链接无效或者已过期')
+#     return redirect(url_for('main.base'))
 
-'''
-邮件确认
-'''
-@auth.route('/confirm/<token>')
-@login_required
-def confirm(token):
-    if current_user.confirmed:
-        return redirect(url_for('main.base'))
-    if current_user.confirm(token):
-        db.session.commit()
-        flash('账户确认成功')
-    else:
-        flash('确认链接无效或者已过期')
-    return redirect(url_for('main.base'))
+# '''
+# 修改密码
+# '''
+# @auth.route('/ChangePassword', methods=['GET', 'POST'])
+# @login_required
+# def change_password():
+#     form = ChangePasswordForm()
+#     if form.validate_on_submit():
+#         if current_user.verify_password(form.old_password.data):
+#             current_user.password = form.password.data
+#             db.session.add(current_user)
+#             db.session.commit()
+#             flash('密码重设成功')
+#             return redirect(url_for('main.base'))
+#         else:
+#             flash('原密码不正确')
+#     return render_template("auth/change_password.html", form=form)
 
-'''
-修改密码
-'''
-@auth.route('/ChangePassword', methods=['GET', 'POST'])
-@login_required
-def change_password():
-    form = ChangePasswordForm()
-    if form.validate_on_submit():
-        if current_user.verify_password(form.old_password.data):
-            current_user.password = form.password.data
-            db.session.add(current_user)
-            db.session.commit()
-            flash('密码重设成功')
-            return redirect(url_for('main.base'))
-        else:
-            flash('原密码不正确')
-    return render_template("auth/change_password.html", form=form)
-
-'''
-修改邮箱
-'''
-@auth.route('/change/email', methods=['GET', 'POST'])
-@login_required
-def change_email():
-    email_form = ChangeEmailForm()
-    # user = User.query.filter_by(email=email_form.old_email.data).first()
-    # send_email(user.email, '修改邮箱验证码', 'auth/email/modify_email',)
-    return render_template("auth/change_email.html", form=email_form)
+# '''
+# 修改邮箱
+# '''
+# @auth.route('/change/email', methods=['GET', 'POST'])
+# @login_required
+# def change_email():
+#     email_form = ChangeEmailForm()
+#     user = User.query.filter_by(email=email_form.old_email.data).first()
+#     if email_form.validate_on_submit() and MyRedis.get_cache_data(my_redis, email_form.old_email.data):
+#         user.email = email_form.new_email.data
+#         db.session.commit()
+#         flash('修改成功')
+#     return render_template("auth/change_email.html", form=email_form)
 
 
 

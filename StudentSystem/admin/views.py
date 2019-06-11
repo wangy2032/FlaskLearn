@@ -609,9 +609,8 @@ def send_code_email():
 def change_email():
     email_form = ChangeEmailForm()
     user = User.query.filter_by(email=email_form.old_email.data).first()
-    if user:
-        send_email(user.email, '修改邮箱验证码', 'auth/email/modify_email',)
-    if email_form.validate_on_submit():
+    if email_form.validate_on_submit() and MyRedis.get_cache_data(my_redis, email_form.old_email.data):
         user.email = email_form.new_email.data
         db.session.commit()
+        flash('修改成功')
     return render_template("admin/change_email.html", form=email_form)
