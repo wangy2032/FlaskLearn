@@ -23,10 +23,7 @@
             </div>
           </div>
       </form>
-      <button type="button" class="btn btn-primary btn-sm">
-                        <a style='text-decoration:none; color:#FFFFFF'
-                           href="">
-                            添加</a></button>
+
   </div>
   </div>
   <!-- Table -->
@@ -35,7 +32,8 @@
         <th>姓名</th>
         <th>专业</th>
         <th>班级</th>
-        <th>查看成绩</th>
+        <th>操作</th>
+
         {% for student in students %}
             <tr>
                 <td>{{ student.student_id }}</td>
@@ -47,6 +45,10 @@
                         <a style='text-decoration:none; color:#FFFFFF'
                            href="{{ url_for('admin.student_score_msg', student_id=student.student_id) }}">
                             查看</a></button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <a style='text-decoration:none; color:#FFFFFF'
+                           href="{{ url_for('admin.score_data_download', student_id=student.student_id) }}">
+                            导出Excel表</a></button>
                 </td>
             </tr>
         {% endfor %}

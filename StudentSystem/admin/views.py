@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from . import admin
-from flask import render_template, flash, request, redirect, url_for, jsonify
+from flask import render_template, flash, request, redirect, url_for, jsonify, Response
 from StudentSystem.models import User, Course, Geren, Student, Teacher, Xueji, db, Score
 from flask_login import login_required, current_user
 from .forms import SearchForm, ModifyUserForm, AddTeacherForm, \
@@ -84,7 +84,8 @@ def account_number_show():
     if form.validate_on_submit() and form.info_data.data:
         filters = {or_(User.student_id == form.info_data.data.strip(),
                 User.username == form.info_data.data.strip(),
-                User.email == form.info_data.data.strip())}
+                User.email == form.info_data.data.strip(),
+                User.role == form.info_data.data.strip())}
         pagination = User.query.filter(*filters).paginate(page=page, per_page=per_page)
         teachers = pagination.items
         contxt = {
@@ -261,7 +262,7 @@ def student_geren_delete(student_id):
     return redirect(url_for('admin.user_message'))
 
 
-@admin.route('stuednt/<student_id>/show-modify', methods=['GET', 'POST'])
+@admin.route('student/<student_id>/show-modify', methods=['GET', 'POST'])
 @login_required
 def show_or_modify(student_id):
     '''
@@ -615,3 +616,19 @@ def change_email():
         db.session.commit()
         flash('修改成功')
     return render_template("admin/change_email.html", form=email_form)
+
+@admin.route('/<student_id>/score/data/downloads')
+@login_required
+def score_data_download(student_id):
+    def get_data():
+        student_scores = Score.query.filter_by(student_id=student_id).all()
+        items = []
+        items.append('课程编号' + "," + '学号' + "," + '课程名字' + "," + "学分" + "," + '成绩' + "\n")
+        for item in student_scores:
+            items.append(item.course_id + "," + item.student_id + "," + item.course_name + ","
+                         + item.course_credit + "," + str(item.fraction) + "\n")
+        return items
+    response = Response(get_data())
+    response.headers['Content-Disposition'] = "attachment;filename*=UTF-8''{}.csv".format(student_id)
+    response.headers['Content-Type'] = 'text/csv;charset=UTF-8'
+    return response
