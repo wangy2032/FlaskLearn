@@ -16,6 +16,7 @@ class Config:
     MAIL_SERVER = 'smtp.qq.com'
     # 使用TLS
     MAIL_USE_TLS = True
+    # MAIL_USE_SSL = True
     # 邮箱端口
     MAIL_POST = 587
     # 邮箱账号

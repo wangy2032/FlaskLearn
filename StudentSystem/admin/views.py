@@ -5,7 +5,7 @@ from StudentSystem.models import User, Course, Geren, Student, Teacher, Xueji, d
 from flask_login import login_required, current_user
 from .forms import SearchForm, ModifyUserForm, AddTeacherForm, \
     ChangePasswordForm, ChangeEmailForm, AddCourses, StudentJiBenMsg, \
-    StudentXueJi, ModifyCourses, ScoreForm
+    StudentXueJi, ModifyCourses, ScoreForm, StudentXueJiModify, StudentJiBenMsgModify
 from sqlalchemy import or_, and_
 import psutil, json, string, redis, random
 from StudentSystem.sendEmail import send_email,MyRedis
@@ -270,7 +270,7 @@ def show_or_modify(student_id):
     :return:
     '''
 
-    form = StudentJiBenMsg()
+    form = StudentJiBenMsgModify()
     geren = Geren.query.filter_by(student_id=student_id).first()
     if form.validate_on_submit():
         if form.modify.data:
@@ -378,7 +378,7 @@ def xue_ji_show_or_modify(student_id):
     :param student_id:
     :return:
     '''
-    form = StudentXueJi()
+    form = StudentXueJiModify()
     xueji = Xueji.query.filter_by(student_id=student_id).first()
     if form.validate_on_submit():
         if form.modify.data:

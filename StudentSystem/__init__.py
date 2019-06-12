@@ -23,6 +23,11 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
     app.config['MAX_CONTENT_LENGTH'] = Config.IMAGE_SIZE
     app.config['UPLOADED_PHOTOS_DEST'] = Config.IMAGE_PATH
+    # app.config['MAIL_USE_SSL'] = Config.MAIL_USE_SSL
+    app.config['MAIL_USE_TLS'] = Config.MAIL_USE_TLS
+    app.config['MAIL_PORT'] = Config.MAIL_POST
+    app.config['MAIL_USERNAME'] = Config.MAIL_USERNAME
+    app.config['MAIL_PASSWORD'] = Config.MAIL_PASSWORD
     global file
     file = UploadSet('photos', IMAGES)
     configure_uploads(app, file)
