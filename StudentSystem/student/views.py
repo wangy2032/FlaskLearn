@@ -112,6 +112,21 @@ def score_show():
     scores = Score.query.filter_by(student_id=current_user.student_id).all()
     return render_template('student/score_show.html', scores=scores)
 
+"""
+成绩删除
+"""
+@student.route('/course/<student_id>/<course_id>/delete')
+@login_required
+def course_delete(student_id, course_id):
+    tmp = Score.query.filter_by(student_id=student_id, course_id=course_id).first()
+    print(student_id, course_id)
+    print(tmp)
+    if tmp:
+        db.session.delete(tmp)
+        db.session.commit()
+        flash('删除成功！')
+    return redirect(url_for('student.course_show'))
+
 
 
 

@@ -77,6 +77,12 @@
                                 <td>{{ course.teacher }}</td>
                                 <td>{{ course.class_room }}</td>
                                 <td>{{ course.course_time }}</td>
+                                <td>
+                                    <a style='text-decoration:none; color:#FFFFFF'
+                               href="{{ url_for('student.course_delete', student_id=current_user.student_id, course_id=course.course_id) }}">
+                        <button type="button" class="btn btn-primary btn-sm">
+                                删除</button></a>
+                    </td>
                             </tr>
                         {% endfor %}
                   </table>
