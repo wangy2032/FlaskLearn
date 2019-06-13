@@ -109,10 +109,26 @@ def teacher_delete(id):
     user = User.query.filter_by(student_id=id).first()
     if user.role == 'teacher':
         teacher = Teacher.query.filter_by(teacher_id=id).first()
-        db.session.delete(teacher)
+        courses = Course.query.filter_by(teacher_id=id).all()
+        if courses:
+            for course in courses:
+                db.session.delete(course)
+        if teacher:
+            db.session.delete(teacher)
     if user.role == 'student':
         student = Student.query.filter_by(student_id=id).first()
-        db.session.delete(student)
+        geren = Geren.query.filter_by(student_id=id).first()
+        xj = Xueji.query.filter_by(student_id=id).first()
+        scores = Score.query.filter_by(student_id=id).all()
+        if scores:
+            for score in scores:
+                db.session.delete(score)
+        if geren:
+            db.session.delete(geren)
+        if xj:
+            db.session.delete(xj)
+        if student:
+            db.session.delete(student)
     db.session.delete(user)
     db.session.commit()
     flash('删除成功！')
