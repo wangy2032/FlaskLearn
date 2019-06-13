@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+import csv
+
+from flask_admin._compat import csv_encode
+
 from . import admin
-from flask import render_template, flash, request, redirect, url_for, jsonify, Response
+from flask import render_template, flash, request, redirect, url_for, jsonify, Response, make_response, stream_with_context
 from StudentSystem.models import User, Course, Geren, Student, Teacher, Xueji, db, Score
 from flask_login import login_required, current_user
 from .forms import SearchForm, ModifyUserForm, AddTeacherForm, \
@@ -9,6 +13,7 @@ from .forms import SearchForm, ModifyUserForm, AddTeacherForm, \
 from sqlalchemy import or_, and_
 import psutil, json, string, redis, random
 from StudentSystem.sendEmail import send_email,MyRedis
+import codecs
 
 
 
@@ -620,15 +625,28 @@ def change_email():
 @admin.route('/<student_id>/score/data/downloads')
 @login_required
 def score_data_download(student_id):
+    class Echo(object):
+        '''
+        只实现类文件接口的写方法的对象。
+        '''
+        def write(self, value):
+            '''
+            通过返回值来写入值，而不是存储在缓冲区中
+            :param value:
+            :return:
+            '''
+            return value
+
+    writer = csv.writer(Echo())
     def get_data():
         student_scores = Score.query.filter_by(student_id=student_id).all()
-        items = []
-        items.append('课程编号' + "," + '学号' + "," + '课程名字' + "," + "学分" + "," + '成绩' + "\n")
+        titles =  ['课程编号' , '学号' , '课程名字' , "学分" , '成绩' ]
+        header = [codecs.BOM_UTF8.decode("utf8")+codecs.BOM_UTF8.decode()+head for head in titles]
+        yield writer.writerow(header)
         for item in student_scores:
-            items.append(item.course_id + "," + item.student_id + "," + item.course_name + ","
-                         + item.course_credit + "," + str(item.fraction) + "\n")
-        return items
-    response = Response(get_data())
+            b = [item.course_id , item.student_id , item.course_name , item.course_credit , str(item.fraction)]
+            yield writer.writerow(b)
+    response = Response(stream_with_context(get_data()))
     response.headers['Content-Disposition'] = "attachment;filename*=UTF-8''{}.csv".format(student_id)
     response.headers['Content-Type'] = 'text/csv;charset=UTF-8'
     return response
